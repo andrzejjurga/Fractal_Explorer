@@ -5,6 +5,6 @@ Efektem końcowym projektu ma być stworznie gry. Jej głównym założeniem ma 
 Rozważamy użycie przede wszystkim zbioru Mandelbrota.
 
 Członkowie:
-  Anderzej Jruga
+  Andrzej Jurga
   Antoni Tretiakov
   Sebastian Jerzykiewicz
