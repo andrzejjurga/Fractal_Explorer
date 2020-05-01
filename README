@@ -1,0 +1,33 @@
+/////////////////////////////////////////////////////////////////////////////////
+//
+// Autor: Antoni Tretiakov
+//
+// Wersja: 0.5
+// 
+// Opis programu:
+//      Program do wykrywania kolizji między okrągłym obiektem
+//      i nierówną powierzchnią na obrazie.
+//
+// Uwagi:
+//      Bardzo prawdopodobne jest, że przyszłe wersje programu
+//      będą działały na innej zasadzie, to znaczy zmianę
+//      dotychczasowego algorytmu.
+//
+//      Program jest mało schludnie napisany!
+//
+// Wymagania:
+//      SFML x86, FastNoise
+//
+/////////////////////////////////////////////////////////////////////////////////
+//
+// Obsługa:
+//
+//      góra, dół  - (Strzałki) przybliżanie, oddalanie
+//
+//      W, A, S, D - kierowanie obiektem
+//
+//      1, 2       - Przyśpieszanie, spowalnianie klatek
+//
+//      Escape     - Wyjście
+//
+/////////////////////////////////////////////////////////////////////////////////
