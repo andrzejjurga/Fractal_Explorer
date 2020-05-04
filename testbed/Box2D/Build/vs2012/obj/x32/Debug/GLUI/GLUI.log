@@ -1,0 +1,67 @@
+﻿cl : wiersz polecenia warning D9035: Opcja "Gm" jest przestarzała i będzie usunięta w przyszłych wydaniach
+cl : wiersz polecenia warning D9025: przesłanianie "/W3" przez " /W1"
+  quaternion.cpp
+  glui_window.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_treepanel.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui_treepanel.cpp(169,20): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_tree.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_translation.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_textbox.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_string.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_statictext.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_spinner.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_separator.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_scrollbar.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_rotation.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_rollout.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_radio.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_panel.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_node.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_mouse_iaction.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_listbox.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_list.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_filebrowser.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  Generowanie kodu...
+  Trwa kompilowanie...
+  glui_edittext.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_control.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_commandline.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_column.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_checkbox.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_button.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_bitmap_img_data.cpp
+  glui_bitmaps.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui_add_controls.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  glui.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+  arcball.cpp
+  algebra3.cpp
+  Generowanie kodu...
+  GLUI.vcxproj -> C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Build\vs2012\bin\Debug\GLUI.lib

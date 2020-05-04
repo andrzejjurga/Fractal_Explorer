@@ -1,0 +1,14 @@
+﻿cl : wiersz polecenia warning D9035: Opcja "Gm" jest przestarzała i będzie usunięta w przyszłych wydaniach
+  b2Island.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Dynamics\b2Island.cpp(315,19): error C2220: następujące ostrzeżenie jest traktowane jako błąd
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Dynamics\b2Island.cpp(315,19): warning C4456: deklaracja „i” powoduje ukrycie poprzedniej deklaracji lokalnej
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Dynamics\b2Island.cpp(310,13): message : zobacz deklarację „i”
+  b2WheelJoint.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.cpp(144,16): error C2220: następujące ostrzeżenie jest traktowane jako błąd
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.cpp(144,16): warning C4456: deklaracja „d” powoduje ukrycie poprzedniej deklaracji lokalnej
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.cpp(106,9): message : zobacz deklarację „d”
+  b2CollideCircle.cpp
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Collision\b2CollideCircle.cpp(141,24): error C2220: następujące ostrzeżenie jest traktowane jako błąd
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Collision\b2CollideCircle.cpp(141,24): warning C4456: deklaracja „separation” powoduje ukrycie poprzedniej deklaracji lokalnej
+C:\Users\ajurg\OneDrive\Pulpit\Box2D_v2.3.0\Box2D\Box2D\Collision\b2CollideCircle.cpp(64,10): message : zobacz deklarację „separation”
+  Generowanie kodu...
