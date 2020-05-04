@@ -1,2 +1,7 @@
 ﻿  TestEntries.cpp
-  Testbed.vcxproj -> A:\Frkatale++\testbed\Box2D\Build\vs2012\bin\Release\Testbed.exe
+A:\Frkatale++\testbed\Box2D\Testbed\Tests\FooTest.h(62,19): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+A:\Frkatale++\testbed\Box2D\Testbed\Tests\FooTest.h(77,1): warning C4305: "argument": obcięcie z "double" do "GLfloat"
+A:\Frkatale++\testbed\Box2D\Testbed\Tests\FooTest.h(78,1): warning C4305: "argument": obcięcie z "double" do "GLfloat"
+A:\Frkatale++\testbed\Box2D\Testbed\Tests\FooTest.h(134,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+A:\Frkatale++\testbed\Box2D\Testbed\Tests\TestEntries.cpp(82,30): error C2653: "FooTest": nie jest nazwą klasa lub nazwą przestrzeni nazw
+A:\Frkatale++\testbed\Box2D\Testbed\Tests\TestEntries.cpp(82,24): error C2065: "Create": niezadeklarowany identyfikator

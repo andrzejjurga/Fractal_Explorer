@@ -1,21 +1,41 @@
 #include <SFML\Graphics.hpp>
 #include <Box2D\Box2D.h>
 
-/** We need this to easily convert between pixel and real-world coordinates*/
-static const float SCALE = 30.f;
 
-/** Create the base for the boxes to land */
-void CreateGround(b2World& World, float X, float Y);
-
-/** Create the boxes */
-void CreateBox(b2World& World, int MouseX, int MouseY);
 
 int main()
 {
-    b2BodyDef myBodyDef;
-    myBodyDef.type = b2_dynamicBody; //this will be a dynamic body
-    myBodyDef.position.Set(0, 20); //set the starting position
-    myBodyDef.angle = 0; //set the starting angle
+	sf::RenderWindow renderWindow(sf::VideoMode(600, 480), "Testowanie animacji");
+	sf::Event event;
 
-    b2Body* dynamicBody = m_world->CreateBody(&myBodyDef);
+	sf::Texture texture;
+	texture.loadFromFile("ship.png");
+
+	sf::IntRect rectSourceSprite(0, 0, 140, 232);
+	sf::Sprite sprite(texture, sf::IntRect(0,0,140,232));
+	sprite.setPosition(240, 124);
+	sf::Clock clock;
+
+
+	while (renderWindow.isOpen()) {
+		while (renderWindow.pollEvent(event)) {
+			if (event.type == sf::Event::EventType::Closed)
+				renderWindow.close();
+		}
+
+		if (clock.getElapsedTime().asSeconds() > 0.1f) {
+			if (rectSourceSprite.left == 420)
+				rectSourceSprite.left = 0;
+			else
+				rectSourceSprite.left += 140;
+			sprite.setTextureRect(rectSourceSprite);
+			clock.restart();
+		}
+
+		renderWindow.clear();
+		renderWindow.draw(sprite);
+		renderWindow.display();
+	}
+
+	return 0;
 }
