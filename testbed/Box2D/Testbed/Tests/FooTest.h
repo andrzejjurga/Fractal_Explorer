@@ -30,6 +30,14 @@ public:
         myBodyDef.position.Set(0, 10); //slightly lower position
         b2Body* staticBody = m_world->CreateBody(&myBodyDef); //add body to world
         staticBody->CreateFixture(&boxFixtureDef); //add fixture to body
+
+        myBodyDef.type = b2_kinematicBody; //this will be a kinematic body
+        myBodyDef.position.Set(-18, 11); // start from left side, slightly above the static body
+        b2Body* kinematicBody = m_world->CreateBody(&myBodyDef); //add body to world
+        kinematicBody->CreateFixture(&boxFixtureDef); //add fixture to body
+
+        kinematicBody->SetLinearVelocity(b2Vec2(1, 0)); //move right 1 unit per second
+        kinematicBody->SetAngularVelocity(360 * DEGTORAD); //1 turn per second counter-clockwise
     }
 
 
