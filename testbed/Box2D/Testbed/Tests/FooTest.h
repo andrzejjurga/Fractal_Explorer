@@ -13,31 +13,41 @@ public:
     FooTest() {
         b2BodyDef myBodyDef;
         myBodyDef.type = b2_dynamicBody; //this will be a dynamic body
-        myBodyDef.position.Set(0, 20); //set the starting position
-        myBodyDef.angle = 0; //set the starting angle
+        myBodyDef.position.Set(-10, 20); //a little to the left
 
-        b2Body* dynamicBody = m_world->CreateBody(&myBodyDef);
+        b2Body* dynamicBody1 = m_world->CreateBody(&myBodyDef);
 
-        b2PolygonShape boxShape;
-        boxShape.SetAsBox(2, 2);
+        b2CircleShape circleShape;
+        circleShape.m_p.Set(0, 0); //position, relative to body position
+        circleShape.m_radius = 1; //radius
 
-        b2FixtureDef boxFixtureDef;
-        boxFixtureDef.shape = &boxShape;
-        boxFixtureDef.density = 1;
-        dynamicBody->CreateFixture(&boxFixtureDef);
+        b2FixtureDef myFixtureDef;
+        myFixtureDef.shape = &circleShape;
+        myFixtureDef.density = 1;//this is a pointer to the shape above
+        dynamicBody1->CreateFixture(&myFixtureDef); //add a fixture to the body
 
-        myBodyDef.type = b2_staticBody; //this will be a static body
-        myBodyDef.position.Set(0, 10); //slightly lower position
-        b2Body* staticBody = m_world->CreateBody(&myBodyDef); //add body to world
-        staticBody->CreateFixture(&boxFixtureDef); //add fixture to body
 
-        myBodyDef.type = b2_kinematicBody; //this will be a kinematic body
-        myBodyDef.position.Set(-18, 11); // start from left side, slightly above the static body
-        b2Body* kinematicBody = m_world->CreateBody(&myBodyDef); //add body to world
-        kinematicBody->CreateFixture(&boxFixtureDef); //add fixture to body
+          //set each vertex of polygon in an array
+        b2Vec2 vertices[5];
+        vertices[0].Set(-1, 2);
+        vertices[1].Set(-1, 0);
+        vertices[2].Set(0, -3);
+        vertices[3].Set(1, 0);
+        vertices[4].Set(1, 1);
 
-        kinematicBody->SetLinearVelocity(b2Vec2(1, 0)); //move right 1 unit per second
-        kinematicBody->SetAngularVelocity(360 * DEGTORAD); //1 turn per second counter-clockwise
+        b2PolygonShape polygonShape;
+        polygonShape.Set(vertices, 5); //pass array to the shape
+
+        myFixtureDef.shape = &polygonShape; //change the shape of the fixture
+        myBodyDef.position.Set(0, 20); //in the middle
+        b2Body* dynamicBody2 = m_world->CreateBody(&myBodyDef);
+        dynamicBody2->CreateFixture(&myFixtureDef); //add a fixture to the body
+
+        polygonShape.SetAsBox(2, 1); //a 4x2 rectangle
+        myBodyDef.position.Set(10, 20); //a bit to the right
+
+        b2Body* dynamicBody3 = m_world->CreateBody(&myBodyDef);
+        dynamicBody3->CreateFixture(&myFixtureDef); //add a fixture to the body
     }
 
 
