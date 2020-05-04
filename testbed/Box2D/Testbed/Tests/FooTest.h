@@ -25,6 +25,11 @@ public:
         boxFixtureDef.shape = &boxShape;
         boxFixtureDef.density = 1;
         dynamicBody->CreateFixture(&boxFixtureDef);
+
+        myBodyDef.type = b2_staticBody; //this will be a static body
+        myBodyDef.position.Set(0, 10); //slightly lower position
+        b2Body* staticBody = m_world->CreateBody(&myBodyDef); //add body to world
+        staticBody->CreateFixture(&boxFixtureDef); //add fixture to body
     }
 
 

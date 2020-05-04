@@ -1,7 +1,2 @@
-﻿  Main.cpp
-A:\Frkatale++\testbed\Box2D\glui\glui.h(914,24): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
-  Render.cpp
-  Test.cpp
-  TestEntries.cpp
-  Generowanie kodu...
+﻿  TestEntries.cpp
   Testbed.vcxproj -> A:\Frkatale++\testbed\Box2D\Build\vs2012\bin\Release\Testbed.exe
