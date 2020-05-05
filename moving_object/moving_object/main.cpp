@@ -1,5 +1,6 @@
 #include <SFML\Graphics.hpp>
 #include <Box2D\Box2D.h>
+#include "Animation.h"
 
 
 
@@ -7,14 +8,9 @@ int main()
 {
 	sf::RenderWindow renderWindow(sf::VideoMode(600, 480), "Testowanie animacji");
 	sf::Event event;
-
-	sf::Texture texture;
-	texture.loadFromFile("ship.png");
-
-	sf::IntRect rectSourceSprite(0, 0, 140, 232);
-	sf::Sprite sprite(texture, sf::IntRect(0,0,140,232));
-	sprite.setPosition(240, 124);
-	sf::Clock clock;
+	string file = "ship.png";
+	
+	Animation ship(file, 232, 140, 4, 0.1f);
 
 
 	while (renderWindow.isOpen()) {
@@ -23,17 +19,9 @@ int main()
 				renderWindow.close();
 		}
 
-		if (clock.getElapsedTime().asSeconds() > 0.1f) {
-			if (rectSourceSprite.left == 420)
-				rectSourceSprite.left = 0;
-			else
-				rectSourceSprite.left += 140;
-			sprite.setTextureRect(rectSourceSprite);
-			clock.restart();
-		}
-
+		ship.AnimationUpdate();
 		renderWindow.clear();
-		renderWindow.draw(sprite);
+		renderWindow.draw(ship.sprite);
 		renderWindow.display();
 	}
 

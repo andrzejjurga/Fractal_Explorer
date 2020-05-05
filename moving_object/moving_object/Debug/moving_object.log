@@ -1,2 +1,19 @@
-﻿  main.cpp
+﻿  Animation.cpp
+A:\Frkatale++\moving_object\moving_object\Animation.cpp(7,47): warning C4244: "argument": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+A:\Frkatale++\moving_object\moving_object\Animation.cpp(7,40): warning C4244: "argument": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+A:\Frkatale++\moving_object\moving_object\Animation.cpp(18,43): warning C4244: "+=": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+  main.cpp
+  Generowanie kodu...
   moving_object.vcxproj -> A:\Frkatale++\moving_object\Debug\moving_object.exe
