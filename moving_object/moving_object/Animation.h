@@ -16,6 +16,7 @@ class Animation
 public:
 	sf::Sprite sprite;
 
+	Animation();
 	Animation(string _file, float _height, float _width, int _amount, float _speed);
 
 	void AnimationUpdate();
