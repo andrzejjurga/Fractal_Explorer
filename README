@@ -10,9 +10,9 @@
 // Uwagi:
 //      Muszę przetestować, czy wydajniejsze będzie generowanie na karcie
 //      graficznej. Nie wiem, czy to się uda dlatego, że niektóre karty
-//		  operują liczbami z przecinkiem o przybliżeniu (float).
-//		  Dla dużych przybliżeń nie będzie można niczego wygenerować
-//		  w takim przypadku.
+//      operują liczbami z przecinkiem o przybliżeniu (float).
+//      Dla dużych przybliżeń nie będzie można niczego wygenerować
+//      w takim przypadku.
 //
 // Wymagania:
 //      SFML x86, SFML x64
