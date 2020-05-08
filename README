@@ -10,7 +10,7 @@
 // Uwagi:
 //      Muszę przetestować, czy wydajniejsze będzie generowanie na karcie
 //      graficznej. Nie wiem, czy to się uda dlatego, że niektóre karty
-//      operują liczbami z przecinkiem o przybliżeniu (float).
+//      operują liczbami z przecinkiem o maksymalnym przybliżeniu (float).
 //      Dla dużych przybliżeń nie będzie można niczego wygenerować
 //      w takim przypadku.
 //
