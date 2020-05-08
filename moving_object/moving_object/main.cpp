@@ -11,18 +11,21 @@ int main()
 	sf::RenderWindow renderWindow(sf::VideoMode(1440, 720), "Testowanie animacji");
     renderWindow.setFramerateLimit(60);
 	sf::Event event;
-	string file = "ship.png";
 	
-	Animation ship(file, 232, 140, 4, 0.1f);
+	Animation ship("ship.png", 140, 84, 4, 0.1f);
+	Animation block("block.png", 100, 100, 4, 0.1f);
+	Animation block1("block1.png", 100, 100, 4, 0.1f);
 	
-
     World swiat;
-    Player gracz(&swiat, 0.0f, 3.0f);
+
+    Player gracz(&swiat, 400.0f, 500.0f);
+    Player box(&swiat, 1.0f, 300.0f);
+    Player box1(&swiat, 100.0f, 300.0f);
 
 
     // Define the ground body.
     b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(0.0f, -11.0f);
+    groundBodyDef.position.Set(0.0f, 0.0f);
     //kszta³t œciany
     b2PolygonShape groundBox;
 
@@ -30,7 +33,7 @@ int main()
 
 
     // The extents are the half-widths of the box.
-    groundBox.SetAsBox(100.0f, 10.0f);
+    groundBox.SetAsBox((1000.0f / swiat.PPM) /2, (100.0f / swiat.PPM)/2);
 
     // Add the ground fixture to the ground body.
     groundBody->CreateFixture(&groundBox, 0.0f);
@@ -40,7 +43,7 @@ int main()
     int32 velocityIterations = 6;
     int32 positionIterations = 2;
 
-    sf::RectangleShape rectangle(sf::Vector2f(140, 100));
+    sf::RectangleShape rectangle(sf::Vector2f(1440, 100));
     rectangle.setFillColor(sf::Color(100, 250, 50));
     rectangle.setPosition(0, 0);
 
@@ -59,19 +62,17 @@ int main()
         // It is generally best to keep the time step and iterations fixed.
         swiat.m_world->Step(timeStep, velocityIterations, positionIterations);
 
-        // Now print the position and angle of the body.
-        b2Vec2 position = gracz.body->GetPosition();
-        float32 angle = gracz.body->GetAngle();
-
-        printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-    
-        ship.sprite.setPosition(100 * position.x, 300 * position.y);
+        //printf("%4.2f %4.2f %4.2f\n", position.x / swiat->PPM, position.y / swiat.PPM, angle);
 
 
-        ship.AnimationUpdate();
+        gracz.playerUpdate(&ship);
+        box.playerUpdate(&block);
+        box1.playerUpdate(&block1);
 		renderWindow.clear();
         renderWindow.draw(rectangle);
 		renderWindow.draw(ship.sprite);
+		renderWindow.draw(block.sprite);
+		renderWindow.draw(block1.sprite);
 		renderWindow.display();
 	}
 
