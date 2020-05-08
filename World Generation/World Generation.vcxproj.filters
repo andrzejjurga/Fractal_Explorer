@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="sources\main.cpp" />
+    <ClCompile Include="sources\ExpRenderTexture.cpp" />
+    <ClCompile Include="sources\MandelViewer.cpp" />
+    <ClCompile Include="sources\MathUtilities.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\ExpRenderTexture.h" />
+    <ClInclude Include="headers\MandelViewer.h" />
+    <ClInclude Include="headers\MathUtilities.h" />
+  </ItemGroup>
+</Project>
