@@ -19,5 +19,6 @@ private:
     sf::Text menu[MAX_NUMBER_OF_ITEMS];
     sf::Texture texture;
     sf::Sprite sprite;
+    sf::RectangleShape start;
 };
 

@@ -45,9 +45,9 @@ int main()
                             
                     }
                     
-                //case sf::Event::Closed:
-                  //  window.close();
-                    //break;
+                case sf::Event::Closed:
+                    window.close();
+                    break;
 
             }
         }

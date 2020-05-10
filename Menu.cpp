@@ -23,6 +23,16 @@ Menu::Menu(float width, float height)
     menu[0].setString("Play");
     menu[0].setPosition(sf::Vector2f(width / 25, height / (MAX_NUMBER_OF_ITEMS + 1) * 1));
     
+    
+    /*
+    start.setSize(sf::Vector2f(menu[0].getLocalBounds().width, menu[0].getLocalBounds().height));
+    start.setOrigin(menu[0].getLocalBounds().width / 2, menu[0].getLocalBounds().height / 2);
+    start.setPosition(sf::Vector2f(menu[0].getPosition().x * 2, menu[0].getPosition().y * 2));
+    start.setFillColor(sf::Color(50,50,50));
+    start.setOutlineColor(sf::Color(40,40,40));
+    start.setOutlineThickness(4);
+    */
+    
     menu[1].setFont(font);
     menu[1].setCharacterSize(50);
     menu[1].setFillColor(sf::Color::Red);//(255, 255, 255));
@@ -47,6 +57,7 @@ Menu::~Menu()
 void Menu::Draw(sf::RenderWindow& window)
 {
     window.draw(sprite);
+    window.draw(start);
     
     for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
     {
