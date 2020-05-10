@@ -2,7 +2,11 @@
 #include <Box2D\Box2D.h>
 #include "Animation.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "World.h"
+#include "b2GLDraw.h"
+
+
 
 
 int main()
@@ -12,20 +16,35 @@ int main()
     renderWindow.setFramerateLimit(60);
 	sf::Event event;
 	
-	Animation ship("ship.png", 140, 84, 4, 0.1f);
+	//Animation ship("ship.png", 140, 84, 4, 0.1f);
+	Animation ship("block.png", 100, 100, 4, 0.1f);
 	Animation block("block.png", 100, 100, 4, 0.1f);
 	Animation block1("block1.png", 100, 100, 4, 0.1f);
 	
     World swiat;
+    
+    //=============================================================
+    b2GLDraw debugDrawInstance;
+    swiat.m_world->SetDebugDraw(&debugDrawInstance);
+    uint32 flags = 0;
+    flags += b2Draw::e_shapeBit;
+    //flags += b2Draw::e_jointBit;
+    //flags += b2Draw::e_pairBit;
+    //flags += b2Draw::e_aabbBit;
+    //flags += b2Draw::e_centerOfMassBit;
+    debugDrawInstance.SetFlags(flags);
+    //=============================================================
 
-    Player gracz(&swiat, 400.0f, 500.0f);
-    Player box(&swiat, 1.0f, 300.0f);
-    Player box1(&swiat, 100.0f, 300.0f);
+
+    Player gracz(&swiat, 200.0f,400.0f);
+    Enemy box(&swiat, 100.0f, 100.0f);
+    Enemy box1(&swiat, 400.0f, 300.0f);
 
 
     // Define the ground body.
     b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(0.0f, 0.0f);
+    //groundBodyDef.position.Set(1.f / swiat.PPM, 1.f / swiat.PPM);
+    groundBodyDef.position.Set(15.f, 3.f);
     //kszta³t œciany
     b2PolygonShape groundBox;
 
@@ -66,13 +85,16 @@ int main()
 
 
         gracz.playerUpdate(&ship);
-        box.playerUpdate(&block);
-        box1.playerUpdate(&block1);
+        box.enemyUpdate(&block);
+        box1.enemyUpdate(&block1);
 		renderWindow.clear();
         renderWindow.draw(rectangle);
 		renderWindow.draw(ship.sprite);
 		renderWindow.draw(block.sprite);
 		renderWindow.draw(block1.sprite);
+
+        swiat.m_world->DrawDebugData();
+
 		renderWindow.display();
 	}
 

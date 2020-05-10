@@ -8,6 +8,7 @@ Animation::Animation(string _file, float _height, float _width, int _amount, flo
     texture.loadFromFile(file);
     rectSourceSprite=sf::IntRect(0, 0, width, height);
     sprite=sf::Sprite(texture, rectSourceSprite);
+    sprite.setOrigin(width / 2, height / 2);
 }
 
 void Animation::AnimationUpdate()

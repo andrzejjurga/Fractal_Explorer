@@ -6,7 +6,7 @@ class World
 {
 public:
 
-	const float PPM = 20.f; //konwersja piksele/metry
+	const float PPM = 30.f; //konwersja piksele/metry
 
 	b2Vec2 gravity;
 	b2World * m_world;
