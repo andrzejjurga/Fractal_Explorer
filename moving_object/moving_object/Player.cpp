@@ -22,11 +22,11 @@ Player::Player(World* swiat, float X, float Y)
 	body->CreateFixture(&fixtureDef); //dodanie kolizji do cia³a
 }
 
-void Player::playerUpdate(Animation* animation)
+void Player::playerUpdate(PlayerAnimation* animation)
 {
 	position = body->GetPosition();
 	angle = body->GetAngle();
-	animation->AnimationUpdate();
+	animation->playerAnimationUpdate();
 	animation->sprite.setRotation(body->GetAngle() * 57.295779513082320876f);
 	animation->sprite.setPosition(position.x * 30, position.y * 30);
 	updateFriction();

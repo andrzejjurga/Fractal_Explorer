@@ -11,31 +11,31 @@ class Enemy
 {
 public:
 	b2BodyDef bodyDef;
-	b2PolygonShape shipShape;
-	b2Vec2 vartices[8];
+	b2PolygonShape shipShape;//kszta³t obiektu
+	b2Vec2 vartices[8];//tablica wieszcho³ków
 	b2Body* body;
 	b2FixtureDef fixtureDef;
 	b2Vec2 position;
 	float32 angle;
-
+	
+	//w³aœciwoœci kinetyczne statku
 	b2Vec2 currentRightNormal;
 	b2Vec2 impulse;
 	b2Vec2 currentForwardNormal;
 	b2Vec2 currentForwardSpeed;
 	float currentSpeed;
-	float maxLateralImpulse = 2.5f;
+	float maxLateralImpulse = 0.5f;
 	//namierzanie gracza
 	b2Vec2 pleyerPosition; //pozycja gracza
 	float playerAngle; //kont na lini którego le¿y gracz
 	float totalRotation; //ca³y kont potrzebny do ustawienia siê przodem do gracza
 	float calAngle; //kont wyliczny z wyprzedzeniem dla torqa
-	float torque;
 	//konstruktor
 	Enemy(World* swiat, float X, float Y);
 
 	void enemyUpdate(Animation* animation, Player* gracz);
+	void updateFriction();//zapobiega "œlizganiu" siê statku na boki
 
-	b2Vec2 getLateralValocity();
-	b2Vec2 getForwardVelocity();
-	void updateFriction();
+	b2Vec2 getLateralValocity();//prêdkoœæ ruchu bocznego
+	b2Vec2 getForwardVelocity();//prêdkosæ na przód i do ty³u
 };

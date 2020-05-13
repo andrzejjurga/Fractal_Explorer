@@ -1,3 +1,14 @@
-﻿  Enemy.cpp
-A:\Frkatale++\moving_object\moving_object\Enemy.cpp(45,34): warning C4244: "argument": konwersja z "int" do "float32", możliwa utrata danych
+﻿  PlayerAnimation.cpp
+A:\Frkatale++\moving_object\moving_object\PlayerAnimation.cpp(7,35): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+A:\Frkatale++\moving_object\moving_object\PlayerAnimation.cpp(18,43): warning C4244: "+=": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+  main.cpp
+  Generowanie kodu...
   moving_object.vcxproj -> A:\Frkatale++\moving_object\Debug\moving_object.exe

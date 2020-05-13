@@ -1,6 +1,7 @@
 #include <SFML\Graphics.hpp>
 #include <Box2D\Box2D.h>
 #include "Animation.h"
+#include "PlayerAnimation.h"
 #include "Player.h"
 #include "Enemy.h"
 #include "World.h"
@@ -12,15 +13,13 @@
 int main()
 {
     //tworzenie okna
-	sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "Testowanie animacji");
+	sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "Testowanie fizyki");
     renderWindow.setFramerateLimit(60);
 	sf::Event event;
 	
-    Animation ship("player_ship.png", 140, 84, 4, 0.1f);
-	//Animation ship("ship.png", 140, 84, 4, 0.1f);
-	//Animation ship("block.png", 100, 100, 4, 0.1f);
+    PlayerAnimation ship("player_ship.png", 140, 84, 4, 0.1f);
 	Animation block("enemy_ship.png", 140, 84, 4, 0.1f);
-    Animation block1("block1.png", 140, 84, 4, 0.1f);
+    Animation block1("box.png", 140, 84, 4, 0.1f);
 	
     World swiat;
 
@@ -78,28 +77,51 @@ int main()
 				renderWindow.close();
 		}
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
             gracz.Up = true;
+            ship.Up = true;
+        }
         else
+        {
             gracz.Up = false;
+            ship.Up = false;
+        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
             gracz.Down = true;
+            ship.Down = true;
+        }
         else
+        {
             gracz.Down = false;
+            ship.Down = false;
+        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
             gracz.Right = true;
+            ship.Right = true;
+        }
         else
+        {
             gracz.Right = false;
+            ship.Right = false;
+        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
             gracz.Left = true;
+            ship.Left = true;
+        }
         else
+        {
             gracz.Left = false;
+            ship.Left = false;
+        }
 
         
-        // Instruct the world to perform a single step of simulation.
-        // It is generally best to keep the time step and iterations fixed.
+        //wykonanie jedneko kroku w symulacji
         swiat.m_world->Step(timeStep, velocityIterations, positionIterations);
+        //ustawienie kamery nad graczem
         view.setCenter(gracz.position.x * 30, gracz.position.y * 30);
-        //printf("%4.2f %4.2f %4.2f\n", position.x / swiat->PPM, position.y / swiat.PPM, angle);
 
 
         gracz.playerUpdate(&ship);

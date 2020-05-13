@@ -5,13 +5,13 @@ Enemy::Enemy(World* swiat, float X, float Y)
 	bodyDef.type = b2_dynamicBody; //okreœlenie typu cia³a dynamiczne/kinetyczne/statyczne
 	bodyDef.position.Set(X / swiat->PPM, Y / swiat->PPM); //pozycja pocz¹tkowa
 	body = swiat->m_world->CreateBody(&bodyDef); //dodanie cia³a do œwiata
-	vartices[0].Set(5 / swiat->PPM, -70 / swiat->PPM);
-	vartices[1].Set(20 / swiat->PPM, 20 / swiat->PPM);
-	vartices[2].Set(40 / swiat->PPM, 10 / swiat->PPM);
-	vartices[3].Set(40 / swiat->PPM, -10 / swiat->PPM);
-	vartices[4].Set(-40 / swiat->PPM, -10 / swiat->PPM);
-	vartices[5].Set(-40 / swiat->PPM, 10 / swiat->PPM);
-	vartices[6].Set(-20 / swiat->PPM, 20 / swiat->PPM);
+	vartices[0].Set(5 / swiat->PPM, -70 / swiat->PPM);//wieszcho³ki wielok¹ta kolizji 
+	vartices[1].Set(10 / swiat->PPM, 20 / swiat->PPM);
+	vartices[2].Set(40 / swiat->PPM, -10 / swiat->PPM);
+	vartices[3].Set(40 / swiat->PPM, -50 / swiat->PPM);
+	vartices[4].Set(-40 / swiat->PPM, -50 / swiat->PPM);
+	vartices[5].Set(-40 / swiat->PPM, -10 / swiat->PPM);
+	vartices[6].Set(-10 / swiat->PPM, 20 / swiat->PPM);
 	vartices[7].Set(-5 / swiat->PPM, -70 / swiat->PPM);
 	shipShape.Set(vartices, 8);
 	fixtureDef.shape = &shipShape;
@@ -34,19 +34,17 @@ void Enemy::enemyUpdate(Animation* animation, Player* gracz)
 
 	pleyerPosition = gracz->getPosition() - position;
 	playerAngle = atan2f(pleyerPosition.x, -pleyerPosition.y);
-	body->SetTransform(position, playerAngle);
 	calAngle = angle + body->GetAngularVelocity() / 3;
 	totalRotation = playerAngle - calAngle;
+
 	while (totalRotation < -180 * DEGTORAD)
 		totalRotation += 360 * DEGTORAD;
 	while (totalRotation > 180 * DEGTORAD)
 		totalRotation -= 360 * DEGTORAD;
-	torque = body->GetInertia() * totalRotation*30;
-	body->ApplyTorque(totalRotation < 0 ? -10 : 10, true);
-	cout << torque << endl;
-	//body->ApplyTorque(torque, true);
-	//if (currentSpeed < 25)
-		body->ApplyForce(b2Vec2(300 * sin(angle), -300 * cos(angle)), body->GetWorldCenter(), true);
+
+	body->ApplyTorque(body->GetInertia() * totalRotation * 30, true);
+	if (currentSpeed < 25)
+		body->ApplyForce(b2Vec2(30 * sin(angle), -30 * cos(angle)), body->GetWorldCenter(), true);
 
 }
 

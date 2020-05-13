@@ -5,6 +5,7 @@ using namespace std;
 
 class Animation
 {
+public:
 	sf::Clock clock;
 	sf::Texture texture;
 	sf::IntRect rectSourceSprite;
@@ -13,7 +14,6 @@ class Animation
 	float width;
 	int amount;
 	float speed;
-public:
 	sf::Sprite sprite;
 
 	Animation();

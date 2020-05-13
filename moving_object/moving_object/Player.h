@@ -2,6 +2,7 @@
 #include <iostream>
 #include <Box2d/Box2D.h>
 #include "Animation.h"
+#include "PlayerAnimation.h"
 #include "World.h"
 
 using namespace std;
@@ -30,7 +31,7 @@ public:
 	//konstruktor
 	Player(World * swiat, float X, float Y);
 
-	void playerUpdate(Animation* animation);
+	void playerUpdate(PlayerAnimation* animation);
 
 	b2Vec2 getLateralValocity();
 	b2Vec2 getForwardVelocity();
