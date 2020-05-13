@@ -2,6 +2,9 @@
 #include <iostream>
 #include <Box2d/Box2D.h>
 
+#define DEGTORAD 0.0174532925199432957f
+#define RADTODEG 57.295779513082320876f
+
 class World
 {
 public:

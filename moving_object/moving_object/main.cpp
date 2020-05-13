@@ -12,16 +12,21 @@
 int main()
 {
     //tworzenie okna
-	sf::RenderWindow renderWindow(sf::VideoMode(1440, 720), "Testowanie animacji");
+	sf::RenderWindow renderWindow(sf::VideoMode(1280, 720), "Testowanie animacji");
     renderWindow.setFramerateLimit(60);
 	sf::Event event;
 	
+    Animation ship("player_ship.png", 140, 84, 4, 0.1f);
 	//Animation ship("ship.png", 140, 84, 4, 0.1f);
-	Animation ship("block.png", 100, 100, 4, 0.1f);
-	Animation block("block.png", 100, 100, 4, 0.1f);
-	Animation block1("block1.png", 100, 100, 4, 0.1f);
+	//Animation ship("block.png", 100, 100, 4, 0.1f);
+	Animation block("enemy_ship.png", 140, 84, 4, 0.1f);
+    Animation block1("block1.png", 140, 84, 4, 0.1f);
 	
     World swiat;
+
+    sf::View view;
+    view.setSize(sf::Vector2f(1280, 720));
+
     
     //=============================================================
     b2GLDraw debugDrawInstance;
@@ -62,9 +67,7 @@ int main()
     int32 velocityIterations = 6;
     int32 positionIterations = 2;
 
-    sf::RectangleShape rectangle(sf::Vector2f(1440, 100));
-    rectangle.setFillColor(sf::Color(100, 250, 50));
-    rectangle.setPosition(0, 0);
+
 
 
     // This is our little game loop.
@@ -74,27 +77,41 @@ int main()
 			if (event.type == sf::Event::EventType::Closed)
 				renderWindow.close();
 		}
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            gracz.Up = true;
+        else
+            gracz.Up = false;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            gracz.Down = true;
+        else
+            gracz.Down = false;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            gracz.Right = true;
+        else
+            gracz.Right = false;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            gracz.Left = true;
+        else
+            gracz.Left = false;
 
-
-
+        
         // Instruct the world to perform a single step of simulation.
         // It is generally best to keep the time step and iterations fixed.
         swiat.m_world->Step(timeStep, velocityIterations, positionIterations);
-
+        view.setCenter(gracz.position.x * 30, gracz.position.y * 30);
         //printf("%4.2f %4.2f %4.2f\n", position.x / swiat->PPM, position.y / swiat.PPM, angle);
 
 
         gracz.playerUpdate(&ship);
-        box.enemyUpdate(&block);
-        box1.enemyUpdate(&block1);
+        box.enemyUpdate(&block, &gracz);
+        box1.enemyUpdate(&block1, &gracz);
 		renderWindow.clear();
-        renderWindow.draw(rectangle);
 		renderWindow.draw(ship.sprite);
 		renderWindow.draw(block.sprite);
 		renderWindow.draw(block1.sprite);
 
         swiat.m_world->DrawDebugData();
-
+        renderWindow.setView(view);
 		renderWindow.display();
 	}
 
