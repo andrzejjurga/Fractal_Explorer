@@ -1,0 +1,16 @@
+﻿  Animation.cpp
+A:\Frkatale++\moving_object\moving_object\Animation.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  b2GLDraw.cpp
+C:\Users\ajurg\OneDrive\Pulpit\b2GLDraw.h(6,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'Box2D/Box2D.h': No such file or directory
+  Collision.cpp
+A:\Frkatale++\moving_object\moving_object\Collision.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'Box2d/Box2D.h': No such file or directory
+  Enemy.cpp
+A:\Frkatale++\moving_object\moving_object\Enemy.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'Box2d/Box2D.h': No such file or directory
+  main.cpp
+A:\Frkatale++\moving_object\moving_object\main.cpp(1,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML\Graphics.hpp': No such file or directory
+  Player.cpp
+A:\Frkatale++\moving_object\moving_object\Player.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'Box2d/Box2D.h': No such file or directory
+  PlayerAnimation.cpp
+A:\Frkatale++\moving_object\moving_object\Animation.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  World.cpp
+A:\Frkatale++\moving_object\moving_object\World.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'Box2d/Box2D.h': No such file or directory

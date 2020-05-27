@@ -25,6 +25,8 @@ public:
 	b2Vec2 currentForwardSpeed;
 	float currentSpeed;
 	float maxLateralImpulse = 0.5f;
+	float enginePower = 30.f;
+	bool connect = false;
 	//namierzanie gracza
 	b2Vec2 pleyerPosition; //pozycja gracza
 	float playerAngle; //kont na lini którego le¿y gracz

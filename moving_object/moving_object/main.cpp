@@ -1,12 +1,13 @@
 #include <SFML\Graphics.hpp>
 #include <Box2D\Box2D.h>
+#include <iostream>
 #include "Animation.h"
 #include "PlayerAnimation.h"
 #include "Player.h"
 #include "Enemy.h"
 #include "World.h"
 #include "b2GLDraw.h"
-
+#include "Collision.h"
 
 
 
@@ -19,14 +20,16 @@ int main()
 	
     PlayerAnimation ship("player_ship.png", 140, 84, 4, 0.1f);
 	Animation block("enemy_ship.png", 140, 84, 4, 0.1f);
-    Animation block1("box.png", 140, 84, 4, 0.1f);
+    Animation block1("enemy_ship.png", 140, 84, 4, 0.1f);
 	
     World swiat;
 
     sf::View view;
-    view.setSize(sf::Vector2f(1280, 720));
+    view = renderWindow.getDefaultView();
 
-    
+    Collision kolizje;
+
+
     //=============================================================
     b2GLDraw debugDrawInstance;
     swiat.m_world->SetDebugDraw(&debugDrawInstance);
@@ -56,7 +59,7 @@ int main()
 
 
     // The extents are the half-widths of the box.
-    groundBox.SetAsBox((1000.0f / swiat.PPM) /2, (100.0f / swiat.PPM)/2);
+    groundBox.SetAsBox((1000.0f / PPM) /2, (100.0f / PPM)/2);
 
     // Add the ground fixture to the ground body.
     groundBody->CreateFixture(&groundBox, 0.0f);
@@ -117,11 +120,11 @@ int main()
             ship.Left = false;
         }
 
-        
+
         //wykonanie jedneko kroku w symulacji
         swiat.m_world->Step(timeStep, velocityIterations, positionIterations);
         //ustawienie kamery nad graczem
-        view.setCenter(gracz.position.x * 30, gracz.position.y * 30);
+        view.setCenter(gracz.position.x * PPM, gracz.position.y * PPM);
 
 
         gracz.playerUpdate(&ship);
@@ -135,6 +138,7 @@ int main()
         swiat.m_world->DrawDebugData();
         renderWindow.setView(view);
 		renderWindow.display();
+        ship.sprite.setColor(sf::Color(255, 255, 255));
 	}
 
 	return 0;

@@ -92,7 +92,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>A:\box2d\SFML-Box2D-Tutorials-master\Box2D\Debug Draw_Renderer\Visual Studio (Windows)\External Libraries\Box2D\lib;C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>A:\box2d\lib;C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>Box2D.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -116,15 +116,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>A:\box2d\SFML-Box2D-Tutorials-master\Box2D\Debug Draw_Renderer\Visual Studio (Windows)\External Libraries\Box2D\include;C:\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>A:\box2d\include;C:\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>A:\box2d\SFML-Box2D-Tutorials-master\Box2D\Debug Draw_Renderer\Visual Studio (Windows)\External Libraries\Box2D\lib;C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>A:\box2d\lib;C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Box2D.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="C:\Users\ajurg\OneDrive\Pulpit\b2GLDraw.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="C:\Users\ajurg\OneDrive\Pulpit\b2GLDraw.h" />
     <ClInclude Include="C:\Users\ajurg\OneDrive\Pulpit\glext.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerAnimation.h" />

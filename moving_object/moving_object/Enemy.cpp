@@ -3,22 +3,26 @@
 Enemy::Enemy(World* swiat, float X, float Y)
 {
 	bodyDef.type = b2_dynamicBody; //okreœlenie typu cia³a dynamiczne/kinetyczne/statyczne
-	bodyDef.position.Set(X / swiat->PPM, Y / swiat->PPM); //pozycja pocz¹tkowa
+	bodyDef.position.Set(X / PPM, Y / PPM); //pozycja pocz¹tkowa
 	body = swiat->m_world->CreateBody(&bodyDef); //dodanie cia³a do œwiata
-	vartices[0].Set(5 / swiat->PPM, -70 / swiat->PPM);//wieszcho³ki wielok¹ta kolizji 
-	vartices[1].Set(10 / swiat->PPM, 20 / swiat->PPM);
-	vartices[2].Set(40 / swiat->PPM, -10 / swiat->PPM);
-	vartices[3].Set(40 / swiat->PPM, -50 / swiat->PPM);
-	vartices[4].Set(-40 / swiat->PPM, -50 / swiat->PPM);
-	vartices[5].Set(-40 / swiat->PPM, -10 / swiat->PPM);
-	vartices[6].Set(-10 / swiat->PPM, 20 / swiat->PPM);
-	vartices[7].Set(-5 / swiat->PPM, -70 / swiat->PPM);
+	fixtureDef.restitution = 0.2f;
+	vartices[0].Set(5 / PPM, -70 / PPM);//wieszcho³ki wielok¹ta kolizji 
+	vartices[1].Set(10 / PPM, 20 / PPM);
+	vartices[2].Set(40 / PPM, -10 / PPM);
+	vartices[3].Set(40 / PPM, -50 / PPM);
+	vartices[4].Set(-40 / PPM, -50 / PPM);
+	vartices[5].Set(-40 / PPM, -10 / PPM);
+	vartices[6].Set(-10 / PPM, 20 / PPM);
+	vartices[7].Set(-5 / PPM, -70 / PPM);
 	shipShape.Set(vartices, 8);
+	enginePower = 30.f;
+	maxLateralImpulse = 2.5f;
 	fixtureDef.shape = &shipShape;
 	fixtureDef.density = 1; //gêstoœæ
 	fixtureDef.friction = 0.01f; //tarcie
 	body->CreateFixture(&fixtureDef); //dodanie kolizji do cia³a
 	updateFriction();
+	body->SetUserData(this);
 }
 
 void Enemy::enemyUpdate(Animation* animation, Player* gracz)
@@ -26,8 +30,8 @@ void Enemy::enemyUpdate(Animation* animation, Player* gracz)
 	position = body->GetPosition();
 	angle = body->GetAngle();
 	animation->AnimationUpdate();
-	animation->sprite.setRotation(angle * 57.295779513082320876f);
-	animation->sprite.setPosition(position.x * 30, position.y * 30);
+	animation->sprite.setRotation(angle * RADTODEG);
+	animation->sprite.setPosition(position.x * PPM, position.y * PPM);
 	updateFriction();
 	currentForwardNormal = body->GetWorldVector(b2Vec2(0, 1));
 	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
@@ -43,8 +47,8 @@ void Enemy::enemyUpdate(Animation* animation, Player* gracz)
 		totalRotation -= 360 * DEGTORAD;
 
 	body->ApplyTorque(body->GetInertia() * totalRotation * 30, true);
-	if (currentSpeed < 25)
-		body->ApplyForce(b2Vec2(30 * sin(angle), -30 * cos(angle)), body->GetWorldCenter(), true);
+	if (currentSpeed < 15)
+		body->ApplyForce(b2Vec2(enginePower * sin(angle), enginePower * -cos(angle)), body->GetWorldCenter(), true);
 
 }
 
