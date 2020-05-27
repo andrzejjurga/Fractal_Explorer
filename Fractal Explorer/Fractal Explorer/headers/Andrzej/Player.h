@@ -33,6 +33,8 @@ public:
 	bool connect = false;
 
 	int HP; //Punkty ¿ycia statku
+	sf::RectangleShape HPSprite;
+	sf::RectangleShape HPSpriteOutline;
 	//konstruktor
 	Player(World * swiat, float X, float Y);
 
@@ -45,4 +47,6 @@ public:
 	
 	void hitDamage(PlayerAnimation* animation);
 	void startContact();
+
+	void HPUpdate(sf::Vector2f center);
 };

@@ -4,7 +4,8 @@
 #include <Animation.h>
 #include <PlayerAnimation.h>
 #include <FractalChart.h>
-//#include <Enemy.h>
+#include <Enemy.h>
+#include <Music.h>
 
 int main()
 {
@@ -12,9 +13,12 @@ int main()
     sf::Event event;
     window.setFramerateLimit(60);
 
+
     // World
 
     World world;
+
+    Music music;
 
     FractalChart map("./resources/bgAnim.png", "./resources/bgStatic.png",sf::Vector2i(1280*4,720*4), sf::Vector2i(1280,720),1);
 
@@ -30,10 +34,11 @@ int main()
     sf::View view;
     view = window.getDefaultView();
 
+
     // Enemy
 
-    //PlayerAnimation enemyShip("./resources/enemy_ship.png", 140, 84, 4, 0.1f);
-    //Enemy enemy(&world, 200, 400);
+    Animation enemyShip("./resources/enemy_ship.png", 140, 84, 4, 0.1f);
+    Enemy enemy(&world, 200, 400);
 
     while (window.isOpen())
     {
@@ -84,19 +89,25 @@ int main()
             ship.Left = false;
         }
 
-        //wykonanie jedneko kroku w symulacji
+        //wykonanie jednego kroku w symulacji
 
         world.m_world->Step(timeStep, velocityIterations, positionIterations);
-
-        view.setCenter(player.position.x * PPM, player.position.y * PPM);
-        map.update({ player.position.x * PPM, player.position.y * PPM });
+        player.HPUpdate(view.getCenter());
         window.setView(view);
+        view.setCenter(player.position.x * PPM, player.position.y * PPM);
+
+        map.update({ player.position.x * PPM, player.position.y * PPM });
         player.playerUpdate(&ship);
+        enemy.enemyUpdate(&enemyShip, &player);
 
         window.clear();
         window.draw(map);
         window.draw(ship.sprite);
+        window.draw(player.HPSpriteOutline);
+        window.draw(player.HPSprite);
+        window.draw(enemyShip.sprite);
         window.display();
+        music.update();
+        cout << player.HP << endl;
     }
-
 }

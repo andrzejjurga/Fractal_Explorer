@@ -148,9 +148,10 @@
       <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>box2d.lib;sfml-network-s.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;ws2_32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;freetype.lib;winmm.lib;sfml-main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib</AdditionalDependencies>
@@ -161,6 +162,7 @@
     <ClCompile Include="sources\Andrzej\Animation.cpp" />
     <ClCompile Include="sources\Andrzej\Collision.cpp" />
     <ClCompile Include="sources\Andrzej\Enemy.cpp" />
+    <ClCompile Include="sources\Andrzej\Music.cpp" />
     <ClCompile Include="sources\Antoni\ExpRenderTexture.cpp" />
     <ClCompile Include="sources\Antoni\FractalChart.cpp" />
     <ClCompile Include="sources\Antoni\MandelViewer.cpp" />
@@ -173,6 +175,7 @@
     <ClInclude Include="headers\Andrzej\Animation.h" />
     <ClInclude Include="headers\Andrzej\Collision.h" />
     <ClInclude Include="headers\Andrzej\Enemy.h" />
+    <ClInclude Include="headers\Andrzej\Music.h" />
     <ClInclude Include="headers\Andrzej\Player.h" />
     <ClInclude Include="headers\Andrzej\PlayerAnimation.h" />
     <ClInclude Include="headers\Andrzej\World.h" />

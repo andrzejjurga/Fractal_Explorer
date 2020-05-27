@@ -4,6 +4,16 @@
 Player::Player(World* swiat, float X, float Y)
 {
 	HP = 100;
+	HPSprite.setPosition(100, 100);
+	HPSprite.setSize(sf::Vector2f(150, 40));
+	HPSprite.setFillColor(sf::Color(240, 0, 0));
+	HPSpriteOutline.setPosition(100, 100);
+	HPSpriteOutline.setSize(sf::Vector2f(152, 42));
+	HPSpriteOutline.setFillColor(sf::Color(0, 0, 0, 0));
+	HPSpriteOutline.setOutlineColor(sf::Color::Black);
+	HPSpriteOutline.setOutlineThickness(5);
+
+
 	bodyDef.type = b2_dynamicBody; //okreœlenie typu cia³a dynamiczne/kinetyczne/statyczne
 	bodyDef.position.Set(X / PPM, Y / PPM); //pozycja pocz¹tkowa
 	body = swiat->m_world->CreateBody(&bodyDef); //dodanie cia³a do œwiata
@@ -36,6 +46,12 @@ void Player::playerUpdate(PlayerAnimation* animation)
 	animation->sprite.setPosition(position.x * 30, position.y * 30);
 	updateFriction();
 	currentForwardNormal = body->GetWorldVector(b2Vec2(0, 1));
+	//kolizje
+	if (abs(currentSpeed - (-1 * b2Dot(getForwardVelocity(), currentForwardNormal))) > 0.30)
+		hitDamage(animation);
+	else
+		animation->sprite.setColor(sf::Color(255, 255, 255));
+
 	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
 
 	if (Right == true)
@@ -79,12 +95,18 @@ b2Vec2 Player::getPosition()
 
 void Player::hitDamage(PlayerAnimation* animation)
 {
-	if (abs(getForwardVelocity().x) + abs(getForwardVelocity().y) > 10.f)
-		//cout << "oof" << endl;
 		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP -= abs(currentSpeed - (-1 * b2Dot(getForwardVelocity(), currentForwardNormal)));
 }
 
 void Player::startContact()
 {
 	connect = true;
+}
+
+void Player::HPUpdate(sf::Vector2f center)
+{
+	HPSprite.setPosition(center.x + 480, center.y + 300);
+	HPSprite.setSize(sf::Vector2f(HP * 1.5, 40));
+	HPSpriteOutline.setPosition(center.x + 479, center.y + 299);
 }

@@ -11,6 +11,7 @@
     <ClCompile Include="sources\Antoni\MandelViewer.cpp" />
     <ClCompile Include="sources\Antoni\FractalChart.cpp" />
     <ClCompile Include="sources\Antoni\ExpRenderTexture.cpp" />
+    <ClCompile Include="sources\Andrzej\Music.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Andrzej\Animation.h" />
@@ -22,5 +23,6 @@
     <ClInclude Include="headers\Antoni\ExpRenderTexture.h" />
     <ClInclude Include="headers\Antoni\FractalChart.h" />
     <ClInclude Include="headers\Antoni\MandelViewer.h" />
+    <ClInclude Include="headers\Andrzej\Music.h" />
   </ItemGroup>
 </Project>

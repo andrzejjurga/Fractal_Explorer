@@ -1,0 +1,21 @@
+﻿  Animation.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Andrzej\Animation.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Collision.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Andrzej\Collision.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'box2d/box2d.h': No such file or directory
+  Enemy.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Andrzej\Enemy.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'box2d/box2d.h': No such file or directory
+  ExpRenderTexture.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Antoni\ExpRenderTexture.h(2,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  FractalChart.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Andrzej\Animation.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  MandelViewer.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Antoni\MandelViewer.h(16,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  main.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Andrzej\World.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'box2d/box2d.h': No such file or directory
+  Player.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Andrzej\Player.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'box2d/box2d.h': No such file or directory
+  PlayerAnimation.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Andrzej\Animation.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  World.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\headers\Andrzej\World.h(3,10): fatal error C1083: Nie można otworzyć pliku dołącz: 'box2d/box2d.h': No such file or directory
+  Generowanie kodu...

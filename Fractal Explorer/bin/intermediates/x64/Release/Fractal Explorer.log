@@ -1,0 +1,13 @@
+﻿  Player.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\sources\Andrzej\Player.cpp(99,85): warning C4244: "-=": konwersja z "float" do "int", możliwa utrata danych
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\sources\Andrzej\Player.cpp(110,35): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  Trwa generowanie kodu
+  1 of 650 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  Fractal Explorer.vcxproj -> A:\Frkatale++\Fractal Explorer\\bin\x64\Release\Fractal Explorer.exe
