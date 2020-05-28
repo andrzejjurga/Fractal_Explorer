@@ -1,28 +1,29 @@
 #include "Enemy.h"
 
-Enemy::Enemy(World* swiat, float X, float Y)
+Enemy::Enemy(World* swiat, Animation* animation, float X, float Y)
 {
 	bodyDef.type = b2_dynamicBody; //okreœlenie typu cia³a dynamiczne/kinetyczne/statyczne
 	bodyDef.position.Set(X / PPM, Y / PPM); //pozycja pocz¹tkowa
 	body = swiat->m_world->CreateBody(&bodyDef); //dodanie cia³a do œwiata
 	fixtureDef.restitution = 0.2f;
-	vartices[0].Set(5 / PPM, -70 / PPM);//wieszcho³ki wielok¹ta kolizji 
-	vartices[1].Set(10 / PPM, 20 / PPM);
-	vartices[2].Set(40 / PPM, -10 / PPM);
-	vartices[3].Set(40 / PPM, -50 / PPM);
-	vartices[4].Set(-40 / PPM, -50 / PPM);
-	vartices[5].Set(-40 / PPM, -10 / PPM);
-	vartices[6].Set(-10 / PPM, 20 / PPM);
-	vartices[7].Set(-5 / PPM, -70 / PPM);
+	vartices[0].Set(2 / PPM, -40 / PPM);//wieszcho³ki wielok¹ta kolizji 
+	vartices[1].Set(5 / PPM, 15 / PPM);
+	vartices[2].Set(25 / PPM, 0 / PPM);
+	vartices[3].Set(25 / PPM, -25 / PPM);
+	vartices[4].Set(-25 / PPM, -25 / PPM);
+	vartices[5].Set(-25 / PPM, 0 / PPM);
+	vartices[6].Set(-5 / PPM, 15 / PPM);
+	vartices[7].Set(-2 / PPM, -40 / PPM);
 	shipShape.Set(vartices, 8);
 	enginePower = 30.f;
 	maxLateralImpulse = 2.5f;
 	fixtureDef.shape = &shipShape;
-	fixtureDef.density = 1; //gêstoœæ
+	fixtureDef.density = 2; //gêstoœæ
 	fixtureDef.friction = 0.01f; //tarcie
 	body->CreateFixture(&fixtureDef); //dodanie kolizji do cia³a
 	updateFriction();
 	body->SetUserData(this);
+	animation->sprite.setScale(sf::Vector2f(2, 2));
 }
 
 void Enemy::enemyUpdate(Animation* animation, Player* gracz)
@@ -46,8 +47,8 @@ void Enemy::enemyUpdate(Animation* animation, Player* gracz)
 	while (totalRotation > 180 * DEGTORAD)
 		totalRotation -= 360 * DEGTORAD;
 
-	body->ApplyTorque(body->GetInertia() * totalRotation * 30, true);
-	if (currentSpeed < 15)
+	body->ApplyTorque(body->GetInertia() * totalRotation * 10, true);
+	if (currentSpeed < 8)
 		body->ApplyForce(b2Vec2(enginePower * sin(angle), enginePower * -cos(angle)), body->GetWorldCenter(), true);
 
 }

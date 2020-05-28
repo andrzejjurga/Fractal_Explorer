@@ -18,9 +18,9 @@ int main()
     renderWindow.setFramerateLimit(60);
 	sf::Event event;
 	
-    PlayerAnimation ship("player_ship.png", 140, 84, 4, 0.1f);
-	Animation block("enemy_ship.png", 140, 84, 4, 0.1f);
-    Animation block1("enemy_ship.png", 140, 84, 4, 0.1f);
+    PlayerAnimation ship("player_ship.png", 44, 28, 4, 0.1f);
+	Animation block("enemy_ship.png", 44, 28, 4, 0.1f);
+    Animation block1("box.png", 44, 28, 4, 0.1f);
 	
     World swiat;
 
@@ -43,9 +43,9 @@ int main()
     //=============================================================
 
 
-    Player gracz(&swiat, 200.0f,400.0f);
-    Enemy box(&swiat, 100.0f, 100.0f);
-    Enemy box1(&swiat, 400.0f, 300.0f);
+    Player gracz(&swiat, &ship, 200.0f,400.0f);
+    Enemy box(&swiat, &block, 100.0f, 100.0f);
+    Enemy box1(&swiat, &block1, 400.0f, 300.0f);
 
 
     // Define the ground body.

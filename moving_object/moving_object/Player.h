@@ -34,7 +34,7 @@ public:
 
 	int HP; //Punkty ¿ycia statku
 	//konstruktor
-	Player(World * swiat, float X, float Y);
+	Player(World * swiat, PlayerAnimation* animation, float X, float Y);
 
 	void playerUpdate(PlayerAnimation* animation);
 

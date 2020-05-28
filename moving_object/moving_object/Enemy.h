@@ -33,7 +33,7 @@ public:
 	float totalRotation; //ca³y kont potrzebny do ustawienia siê przodem do gracza
 	float calAngle; //kont wyliczny z wyprzedzeniem dla torqa
 	//konstruktor
-	Enemy(World* swiat, float X, float Y);
+	Enemy(World* swiat, Animation* animation, float X, float Y);
 
 	void enemyUpdate(Animation* animation, Player* gracz);
 	void updateFriction();//zapobiega "œlizganiu" siê statku na boki
