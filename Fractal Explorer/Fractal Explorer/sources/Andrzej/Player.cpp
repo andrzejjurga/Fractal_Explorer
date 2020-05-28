@@ -43,7 +43,7 @@ void Player::playerUpdate(PlayerAnimation* animation)
 	angle = body->GetAngle();
 	animation->playerAnimationUpdate();
 	animation->sprite.setRotation(angle * RADTODEG);
-	animation->sprite.setPosition(position.x * 30, position.y * 30);
+	animation->sprite.setPosition(position.x * PPM, position.y * PPM);
 	updateFriction();
 	currentForwardNormal = body->GetWorldVector(b2Vec2(0, 1));
 	//kolizje
