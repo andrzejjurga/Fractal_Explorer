@@ -28,8 +28,8 @@ int main()
 
     // Player
 
-    PlayerAnimation ship("./resources/player_ship.png", 140, 84, 4, 0.1f);
-    Player player(&world, 0, 0);
+    PlayerAnimation ship("./resources/player_ship.png", 44, 28, 4, 0.1f);
+    Player player(&world, &ship, 0, 0);
 
     sf::View view;
     view = window.getDefaultView();
@@ -37,8 +37,8 @@ int main()
 
     // Enemy
 
-    Animation enemyShip("./resources/enemy_ship.png", 140, 84, 4, 0.1f);
-    Enemy enemy(&world, 200, 400);
+    Animation enemyShip("./resources/enemy_ship.png", 44, 28, 4, 0.1f);
+    Enemy enemy(&world, &enemyShip, 200, 400);
 
     while (window.isOpen())
     {
@@ -108,6 +108,5 @@ int main()
         window.draw(enemyShip.sprite);
         window.display();
         music.update();
-        cout << player.HP << endl;
     }
 }

@@ -1,6 +1,6 @@
 ﻿  Player.cpp
-A:\Frkatale++\Fractal Explorer\Fractal Explorer\sources\Andrzej\Player.cpp(99,85): warning C4244: "-=": konwersja z "float" do "int", możliwa utrata danych
-A:\Frkatale++\Fractal Explorer\Fractal Explorer\sources\Andrzej\Player.cpp(110,35): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\sources\Andrzej\Player.cpp(100,85): warning C4244: "-=": konwersja z "float" do "int", możliwa utrata danych
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\sources\Andrzej\Player.cpp(111,35): warning C4244: "argument": konwersja z "double" do "T", możliwa utrata danych
           with
           [
               T=float

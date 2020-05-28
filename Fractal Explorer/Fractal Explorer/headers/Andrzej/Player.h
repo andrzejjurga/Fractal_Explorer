@@ -36,7 +36,7 @@ public:
 	sf::RectangleShape HPSprite;
 	sf::RectangleShape HPSpriteOutline;
 	//konstruktor
-	Player(World * swiat, float X, float Y);
+	Player(World* swiat, PlayerAnimation* animation, float X, float Y);
 
 	void playerUpdate(PlayerAnimation* animation);
 

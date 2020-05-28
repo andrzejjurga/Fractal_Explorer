@@ -8,7 +8,7 @@ void PlayerAnimation::playerAnimationUpdate()
     }
     else
     {
-        rectSourceSprite.height = 90;
+        rectSourceSprite.height = 32;
 
     }
     if (clock.getElapsedTime().asSeconds() > speed) {

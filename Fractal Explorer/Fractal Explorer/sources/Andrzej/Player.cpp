@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <cmath>
 
-Player::Player(World* swiat, float X, float Y)
+Player::Player(World* swiat, PlayerAnimation* animation, float X, float Y)
 {
 	HP = 100;
 	HPSprite.setPosition(100, 100);
@@ -18,23 +18,24 @@ Player::Player(World* swiat, float X, float Y)
 	bodyDef.position.Set(X / PPM, Y / PPM); //pozycja pocz¹tkowa
 	body = swiat->m_world->CreateBody(&bodyDef); //dodanie cia³a do œwiata
 	fixtureDef.restitution = 0.2f;//odbijanie siê obiektów
-	vartices[0].Set(5 / PPM, -70 / PPM);
-	vartices[1].Set(20 / PPM, 20 / PPM);
-	vartices[2].Set(40 / PPM, 10 / PPM);
-	vartices[3].Set(40 / PPM, -10 / PPM);
-	vartices[4].Set(-40 / PPM, -10 / PPM);
-	vartices[5].Set(-40 / PPM, 10 / PPM);
-	vartices[6].Set(-20 / PPM, 20 / PPM);
-	vartices[7].Set(-5 / PPM, -70 / PPM);
+	vartices[0].Set(2 / PPM, -40 / PPM);
+	vartices[1].Set(10 / PPM, 20 / PPM);
+	vartices[2].Set(30 / PPM, 10 / PPM);
+	vartices[3].Set(20 / PPM, -10 / PPM);
+	vartices[4].Set(-20 / PPM, -10 / PPM);
+	vartices[5].Set(-30 / PPM, 10 / PPM);
+	vartices[6].Set(-10 / PPM, 20 / PPM);
+	vartices[7].Set(-2 / PPM, -40 / PPM);
 	shipShape.Set(vartices, 8);
 	fixtureDef.shape = &shipShape; 
 	enginePower = 50.f;
 	maxLateralImpulse = 2.5f;
-	fixtureDef.density = 1; //gêstoœæ
+	fixtureDef.density = 2; //gêstoœæ
 	fixtureDef.friction = 0.6f; //tarcie
 	angle = body->GetAngle();
 	body->CreateFixture(&fixtureDef); //dodanie kolizji do cia³a
 	body->SetUserData(this);
+	animation->sprite.setScale(sf::Vector2f(2, 2));
 }
 
 void Player::playerUpdate(PlayerAnimation* animation)
@@ -55,12 +56,12 @@ void Player::playerUpdate(PlayerAnimation* animation)
 	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
 
 	if (Right == true)
-		body->ApplyTorque(20, true);
+		body->ApplyTorque(15, true);
 	if (Left == true)
-		body->ApplyTorque(-20, true);
-	if (Up == true && currentSpeed<20)
+		body->ApplyTorque(-15, true);
+	if (Up == true && currentSpeed<10)
 		body->ApplyForce(b2Vec2(enginePower * sin(body->GetAngle()), enginePower * -cos(body->GetAngle())), body->GetWorldCenter(), true);
-	if (Down == true && currentSpeed > -10)
+	if (Down == true && currentSpeed > -5)
 		body->ApplyForce(b2Vec2(enginePower * -sin(body->GetAngle()), enginePower * cos(body->GetAngle())), body->GetWorldCenter(), true);
 }
 
