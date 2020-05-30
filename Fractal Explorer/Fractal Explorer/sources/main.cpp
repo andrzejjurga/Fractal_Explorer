@@ -28,6 +28,7 @@ int main()
 
     // Player
 
+    //PlayerAnimation ship("./resources/explosion.png", 350, 350, 28, 0.1f);
     PlayerAnimation ship("./resources/player_ship.png", 44, 28, 4, 0.1f);
     Player player(&world, &ship, 0, 0);
 

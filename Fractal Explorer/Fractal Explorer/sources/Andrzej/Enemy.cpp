@@ -2,6 +2,7 @@
 
 Enemy::Enemy(World* swiat, Animation* animation, float X, float Y)
 {
+	HP = 20;
 	bodyDef.type = b2_dynamicBody; //okreœlenie typu cia³a dynamiczne/kinetyczne/statyczne
 	bodyDef.position.Set(X / PPM, Y / PPM); //pozycja pocz¹tkowa
 	body = swiat->m_world->CreateBody(&bodyDef); //dodanie cia³a do œwiata
@@ -35,8 +36,6 @@ void Enemy::enemyUpdate(Animation* animation, Player* gracz)
 	animation->sprite.setPosition(position.x * PPM, position.y * PPM);
 	updateFriction();
 	currentForwardNormal = body->GetWorldVector(b2Vec2(0, 1));
-	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
-
 	pleyerPosition = gracz->getPosition() - position;
 	playerAngle = atan2f(pleyerPosition.x, -pleyerPosition.y);
 	calAngle = angle + body->GetAngularVelocity() / 3;
@@ -50,6 +49,13 @@ void Enemy::enemyUpdate(Animation* animation, Player* gracz)
 	body->ApplyTorque(body->GetInertia() * totalRotation * 10, true);
 	if (currentSpeed < 8)
 		body->ApplyForce(b2Vec2(enginePower * sin(angle), enginePower * -cos(angle)), body->GetWorldCenter(), true);
+
+	if (abs(currentSpeed - (-1 * b2Dot(getForwardVelocity(), currentForwardNormal))) > 0.30)
+		hitDamage(animation);
+	else
+		animation->sprite.setColor(sf::Color(255, 255, 255));
+
+	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
 
 }
 
@@ -75,4 +81,22 @@ void Enemy::updateFriction()
 	float currentForwardSpeed = currentForwardNormal.Normalize();
 	float dragForceMagnitude = -2 * currentForwardSpeed;
 	body->ApplyForce(dragForceMagnitude * currentForwardNormal, body->GetWorldCenter(), true);
+}
+
+void Enemy::hitDamage(Animation* animation)
+{
+	animation->sprite.setColor(sf::Color(255, 0, 0));
+	HP -= abs(currentSpeed - (-1 * b2Dot(getForwardVelocity(), currentForwardNormal)));
+	if (HP <= 0)
+	{
+		HP = 0;
+		delete[] animation;
+		delete this;
+	}
+	cout << HP << endl;
+}
+
+Enemy::~Enemy()
+{
+
 }

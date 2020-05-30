@@ -49,4 +49,6 @@ public:
 	void startContact();
 
 	void HPUpdate(sf::Vector2f center);
+
+
 };

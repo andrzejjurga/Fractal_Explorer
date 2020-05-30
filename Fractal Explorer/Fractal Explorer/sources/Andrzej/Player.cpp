@@ -98,6 +98,8 @@ void Player::hitDamage(PlayerAnimation* animation)
 {
 		animation->sprite.setColor(sf::Color(255, 0, 0));
 		HP -= abs(currentSpeed - (-1 * b2Dot(getForwardVelocity(), currentForwardNormal)));
+		if (HP < 0)
+			HP = 0;
 }
 
 void Player::startContact()

@@ -32,6 +32,8 @@ public:
 	float playerAngle; //kont na lini którego le¿y gracz
 	float totalRotation; //ca³y kont potrzebny do ustawienia siê przodem do gracza
 	float calAngle; //kont wyliczny z wyprzedzeniem dla torqa
+
+	int HP; //Punkty ¿ycia statku
 	//konstruktor
 	Enemy(World* swiat, Animation* animation, float X, float Y);
 
@@ -40,4 +42,8 @@ public:
 
 	b2Vec2 getLateralValocity();//prêdkoœæ ruchu bocznego
 	b2Vec2 getForwardVelocity();//prêdkosæ na przód i do ty³u
+
+	void hitDamage(Animation* animation);
+
+	~Enemy();
 };
