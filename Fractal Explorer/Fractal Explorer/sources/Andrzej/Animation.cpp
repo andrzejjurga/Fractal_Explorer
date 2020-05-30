@@ -30,3 +30,20 @@ void Animation::AnimationUpdate(sf::Vector2f position)
         clock.restart();
     }
 }
+
+Animation& Animation::operator=(const Animation& obj)
+{
+    if (&obj != this)
+    {
+        clock = obj.clock;
+        texture = obj.texture;
+        rectSourceSprite = obj.rectSourceSprite;
+        file = obj.file;
+        height = obj.height;
+        width = obj.width;
+        amount = obj.amount;
+        speed = obj.speed;
+        sprite = obj.sprite;
+    }
+    return *this;
+}

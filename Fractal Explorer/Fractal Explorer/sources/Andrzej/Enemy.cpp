@@ -90,8 +90,8 @@ void Enemy::hitDamage(Animation* animation)
 	if (HP <= 0)
 	{
 		HP = 0;
-		delete[] animation;
-		delete this;
+		//delete[] animation;
+		//delete this;
 	}
 	cout << HP << endl;
 }

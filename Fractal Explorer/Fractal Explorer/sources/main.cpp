@@ -6,6 +6,7 @@
 #include <FractalChart.h>
 #include <Enemy.h>
 #include <Music.h>
+#include <EnemyControl.h>
 
 int main()
 {
@@ -30,6 +31,7 @@ int main()
 
     //PlayerAnimation ship("./resources/explosion.png", 350, 350, 28, 0.1f);
     PlayerAnimation ship("./resources/player_ship.png", 44, 28, 4, 0.1f);
+    Animation enemyShip("./resources/enemy_ship.png", 44, 28, 4, 0.1f);
     Player player(&world, &ship, 0, 0);
 
     sf::View view;
@@ -37,9 +39,9 @@ int main()
 
 
     // Enemy
-
-    Animation enemyShip("./resources/enemy_ship.png", 44, 28, 4, 0.1f);
-    Enemy enemy(&world, &enemyShip, 200, 400);
+    EnemyControl enemyControl;
+   // Animation enemyShip("./resources/enemy_ship.png", 44, 28, 4, 0.1f);
+   // Enemy enemy(&world, &enemyShip, 200, 400);
 
     while (window.isOpen())
     {
@@ -63,6 +65,7 @@ int main()
         {
             player.Down = true;
             ship.Down = true;
+            enemyControl.addEnemy(&world, &enemyShip);
         }
         else
         {
@@ -99,14 +102,15 @@ int main()
 
         map.update({ player.position.x * PPM, player.position.y * PPM });
         player.playerUpdate(&ship);
-        enemy.enemyUpdate(&enemyShip, &player);
+        //enemy.enemyUpdate(&enemyShip, &player);
 
         window.clear();
         window.draw(map);
         window.draw(ship.sprite);
         window.draw(player.HPSpriteOutline);
         window.draw(player.HPSprite);
-        window.draw(enemyShip.sprite);
+        //window.draw(enemyShip.sprite);
+        enemyControl.update(&world, &player, &window, &enemyShip);
         window.display();
         music.update();
     }

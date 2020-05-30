@@ -1,7 +1,6 @@
-﻿  Enemy.cpp
-A:\Frkatale++\Fractal Explorer\Fractal Explorer\sources\Andrzej\Enemy.cpp(89,84): warning C4244: "-=": konwersja z "float" do "int", możliwa utrata danych
+﻿  main.cpp
   Trwa generowanie kodu
-  2 of 653 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  1 of 719 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
