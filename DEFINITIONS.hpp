@@ -22,5 +22,10 @@
 
 #define FONT_FILE_PATH "Resources/Fonts/pixel.ttf"
 
+#define SPLASH_SCREEN_SOUND_FILE_PATH "Resources/Music_Sounds/splash_screen_sound.wav"
+
 #define MAX_NUMBER_OF_ITEMS 3
 
+#define MM_BG_ANIMATION_WIDTH 80
+#define MM_BG_ANIMATION_HEIGHT 45
+#define MM_BG_ANIMATION_AMOUNT 48

@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include "State.hpp"
 #include "Game.hpp"
+#include "Sounds.hpp"
 
 class SplashState : public State
 {
@@ -29,4 +30,7 @@ private:
     sf::Font _font;
     
     sf::Text _text;
+    
+    Sounds _sound;
+    
 };

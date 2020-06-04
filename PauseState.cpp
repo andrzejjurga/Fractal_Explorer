@@ -9,7 +9,7 @@
 #include <iostream>
 #include <sstream>
 
-PauseState::PauseState(GameDataRef data) : _data(data), _animation(PAUSE_BG_ANIMATION_FILE_PATH, 45, 80, 36, 0.1f)
+PauseState::PauseState(GameDataRef data) : _data(data), _animation(PAUSE_BG_ANIMATION_FILE_PATH, MM_BG_ANIMATION_HEIGHT, MM_BG_ANIMATION_WIDTH, MM_BG_ANIMATION_AMOUNT, 0.1f)
 {
     
 }

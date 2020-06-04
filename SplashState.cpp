@@ -11,13 +11,15 @@
 #include "MainMenuState.hpp"
 
 
-SplashState::SplashState(GameDataRef data) : _data(data)
+SplashState::SplashState(GameDataRef data) : _data(data), _sound(SPLASH_SCREEN_SOUND_FILE_PATH)
 {
 
 }
 
 void SplashState::Init()
 {
+    _sound.sound.play();
+    
 	this->_data->assets.LoadTexture("Splash State Background", SPLASH_SCENE_BACKGROUND_FILE_PATH);
 
 	_background.setTexture(this->_data->assets.GetTexture("Splash State Background"));
@@ -43,7 +45,9 @@ void SplashState::HandleInput()
 		{
 			this->_data->window.close();
 		}
+
 	}
+
 }
 
 void SplashState::Update(float dt)
