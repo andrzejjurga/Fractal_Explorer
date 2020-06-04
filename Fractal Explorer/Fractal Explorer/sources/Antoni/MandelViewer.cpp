@@ -59,7 +59,7 @@ void mdAlgorithm(FractalRenderer* object, sf::Uint8 thread_ID)
 		for(mdType x = 0; x < rectangle.width; x++)
 		{
 			iteration = 0;
-			z = { 0 , 0 };
+			z = { 0, 0};
 			c = {
 				scale * (rectangle.left + x - center.x) - displacement.x - relativeCenter.x,
 				scale * (rectangle.top  + y - center.y) - displacement.y - relativeCenter.y
@@ -76,17 +76,6 @@ void mdAlgorithm(FractalRenderer* object, sf::Uint8 thread_ID)
 
 			if (iteration == precision)
 				ptr->image.setPixel( (unsigned int)x, (unsigned int)y, sf::Color(50 + 20 * cos(100 * number),0, 50 + 20 * sin(100 * number)));
-			else if(iteration > precision * 0.6)
-				ptr->image.setPixel(
-				(unsigned int)x,
-					(unsigned int)y,
-					sf::Color(
-					(sf::Uint8)(155 + 100 * sin(-0.5 + iteration / 51.0)),
-						(sf::Uint8)(155 + 100 * sin(1.5 + iteration / 58.0)),
-						(sf::Uint8)(155 + 100 * sin(1.5 + iteration / 53.0)),
-						170
-					)
-				);
 			else
 				ptr->image.setPixel(
 					(unsigned int)x,
@@ -117,8 +106,9 @@ void mdAlgorithm(FractalRenderer* object, sf::Uint8 thread_ID)
 
 FractalRenderer::FractalRenderer()
 	:m_precision(350),
-	m_relativeCenter(1.74917, 38e-5),
-	m_scale(2e-08),
+	//Scale = 8.80861e-09, position = (0.740612, 0.112612)
+	m_relativeCenter(0.740612, 0.112612),
+	m_scale(2e-08),//8.5e-09
 	m_threads_Ammount(0),
 	m_threadAtb(nullptr),
 	m_threads(nullptr)
@@ -230,18 +220,15 @@ bool FractalRenderer::isSynchronized()
 
 bool FractalRenderer::belongsToSet(sf::Vector2md point)
 {
-	point.x = point.x - m_renderSprite.getPosition().x - m_renderSprite.getOrigin().x;
-	point.y = point.y - m_renderSprite.getPosition().y - m_renderSprite.getOrigin().y;
+
+	complex z = { 0 , 0 },
+			c = {
+				m_scale * (m_resolution.x / 2 + point.x / (m_size.x / m_resolution.x) - m_centerPoint.x)  - m_relativeCenter.x,
+				m_scale * (m_resolution.y / 2 + point.y / (m_size.y / m_resolution.y) - m_centerPoint.y) - m_relativeCenter.y
+	};
 
 	size_t iteration = 0;
 	mdType tempRe;
-
-	complex z = { 0 , 0 };
-	complex c = {
-		m_scale * (m_renderSprite.getGlobalBounds().width / 2 + point.x - m_centerPoint.x) - m_displacement.x - m_relativeCenter.x,
-		m_scale * (m_renderSprite.getGlobalBounds().height / 2 +point.y - m_centerPoint.y) - m_displacement.y - m_relativeCenter.y
-	};
-	//    scale * (rectangle.left + x - center.x) - displacement.x - relativeCenter.x,
 
 	while (z.Im * z.Im + z.Re * z.Re < 4.0 && ++iteration < m_precision)
 	{
@@ -262,9 +249,9 @@ void FractalRenderer::animateColor()
 {
 	m_renderSprite.setColor(
 		sf::Color(
-		(sf::Uint8)(200 + 55 * sin(0.5 + m_colorClock.getElapsedTime().asSeconds() / 2.0)),
-			(sf::Uint8)(200 + 55 * cos(1.5 + m_colorClock.getElapsedTime().asSeconds() * 2.0)),
-			(sf::Uint8)(200 + 55 * sin(1.5 + m_colorClock.getElapsedTime().asSeconds() / 2.0))
+		(sf::Uint8)(200 + 55 * sin(0.5 + m_colorClock.getElapsedTime().asSeconds() / 6.0)),
+			(sf::Uint8)(200 + 55 * cos(1.5 + m_colorClock.getElapsedTime().asSeconds() / 3.0)),
+			(sf::Uint8)(200 + 55 * sin(1.5 + m_colorClock.getElapsedTime().asSeconds() / 6.0))
 		)
 	);
 }

@@ -7,17 +7,22 @@ FractalChart::FractalChart()
 	m_resolution(1280, 720)
 {
 	m_background.sprite.setColor(sf::Color(128, 128, 128));
+	m_background3.setTexture(m_background2.texture);
+	m_background3.setOrigin(m_background3.getGlobalBounds().width / 2, m_background3.getGlobalBounds().height / 2);
+	m_background3.setScale(1, -1);
 	m_fractal.create(sf::Vector2i(default_fractal_width, default_fractal_height), sf::Vector2i(default_fractal_width, default_fractal_height), default_opt_level);
-	m_fractal.setPrecision(300);
 }
 
-FractalChart::FractalChart(string filePath,string filePath2, sf::Vector2i size, sf::Vector2i resolution, uShort optimization)
+FractalChart::FractalChart(string filePath,string filePath2, sf::Vector2i size, sf::Vector2i resolution, uint16_t optimization)
 	:m_background(filePath, 720, 1280, 4, 0.2f),
 	m_background2(filePath2, 720, 1280, 2, 0.01f),
 	m_size(size),
 	m_resolution(resolution)
 {
 	m_background.sprite.setColor(sf::Color(128, 128, 128));
+	m_background3.setTexture(m_background2.texture);
+	m_background3.setOrigin(m_background3.getGlobalBounds().width / 2, m_background3.getGlobalBounds().height / 2);
+	m_background3.setScale(1, -1);
 	m_fractal.create(size, resolution, optimization);
 	m_fractal.setPrecision(300);
 }
@@ -26,6 +31,7 @@ void FractalChart::update(sf::Vector2f position)
 {
 	m_background.sprite.setPosition(position);
 	m_background2.sprite.setPosition(position);
+	m_background3.setPosition(position);
 
 	if (m_fractal.isSynchronized())
 	{
@@ -42,7 +48,7 @@ void FractalChart::update(sf::Vector2f position)
 				-m_fractalPosition.y / (m_size.y / m_resolution.y)
 			),
 			true
-		);
+		); // END m_fractal.setPosition(...)
 
 		m_fractal.generate();
 	}
@@ -50,22 +56,23 @@ void FractalChart::update(sf::Vector2f position)
 	m_fractal.animateColor();
 
 	m_background.AnimationUpdate({ 0,0 });
-	m_background2.AnimationUpdate(sf::Vector2f(position.x * 0.75, position.y * 0.75));
+	m_background2.AnimationUpdate(sf::Vector2f(position.x * 0.5, position.y * 0.5));
+
+	sf::IntRect b3rect{ m_background3.getTextureRect() };
+	m_background3.setTextureRect(
+		sf::IntRect(
+			position.x  * 0.25 - 50,
+			-position.y * 0.25 + 50,
+			b3rect.width,
+			b3rect.height
+		)
+	);
 }
 
 void FractalChart::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	sf::Sprite background3 = m_background2.sprite;
-	background3.setTextureRect(
-		sf::IntRect(
-			background3.getTextureRect().left / 2,
-			background3.getTextureRect().top / 2,
-			background3.getTextureRect().width,
-			background3.getTextureRect().height
-			)
-	);
 	target.draw(m_background.sprite, states);
-	target.draw(background3, states);
+	target.draw(m_background3, states);
 	target.draw(m_background2.sprite, states);
 	target.draw(m_fractal);
 }

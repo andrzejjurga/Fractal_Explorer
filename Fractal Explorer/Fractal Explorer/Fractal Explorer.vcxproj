@@ -91,12 +91,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni;$(ProjectDir)headers\Sebastian</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(solutionDir)libraries\BOX2D\lib\$(ConfigurationName);$(solutionDir)libraries\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>box2d.lib;sfml-network-s.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;ws2_32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;freetype.lib;winmm.lib;sfml-main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib</AdditionalDependencies>
     </Link>
@@ -107,12 +108,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni;$(ProjectDir)headers\Sebastian</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>box2d.lib;sfml-network-s.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;ws2_32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;freetype.lib;winmm.lib;sfml-main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(solutionDir)libraries\BOX2D\lib\$(ConfigurationName);$(solutionDir)libraries\SFML\lib</AdditionalLibraryDirectories>
     </Link>
@@ -125,9 +127,10 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni;$(ProjectDir)headers\Sebastian</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -145,13 +148,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(solutionDir)libraries\SFML\include;$(solutionDir)libraries\BOX2D\include;$(ProjectDir)\headers;$(ProjectDir)headers\Andrzej;$(ProjectDir)headers\Antoni;$(ProjectDir)headers\Sebastian</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>box2d.lib;sfml-network-s.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;ws2_32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;freetype.lib;winmm.lib;sfml-main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib</AdditionalDependencies>
@@ -166,11 +169,24 @@
     <ClCompile Include="sources\Andrzej\Music.cpp" />
     <ClCompile Include="sources\Antoni\ExpRenderTexture.cpp" />
     <ClCompile Include="sources\Antoni\FractalChart.cpp" />
+    <ClCompile Include="sources\Antoni\FractalCollision.cpp" />
     <ClCompile Include="sources\Antoni\MandelViewer.cpp" />
+    <ClCompile Include="sources\gameScene.cpp" />
     <ClCompile Include="sources\main.cpp" />
     <ClCompile Include="sources\Andrzej\Player.cpp" />
     <ClCompile Include="sources\Andrzej\PlayerAnimation.cpp" />
     <ClCompile Include="sources\Andrzej\World.cpp" />
+    <ClCompile Include="sources\menuScene.cpp" />
+    <ClCompile Include="sources\pauseScene.cpp" />
+    <ClCompile Include="sources\scenes.cpp" />
+    <ClCompile Include="sources\Sebastian\AssetManager.cpp" />
+    <ClCompile Include="sources\Sebastian\Game.cpp" />
+    <ClCompile Include="sources\Sebastian\GameState.cpp" />
+    <ClCompile Include="sources\Sebastian\InputManager.cpp" />
+    <ClCompile Include="sources\Sebastian\MainMenuState.cpp" />
+    <ClCompile Include="sources\Sebastian\PauseState.cpp" />
+    <ClCompile Include="sources\Sebastian\SplashState.cpp" />
+    <ClCompile Include="sources\Sebastian\StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Andrzej\Animation.h" />
@@ -183,7 +199,19 @@
     <ClInclude Include="headers\Andrzej\World.h" />
     <ClInclude Include="headers\Antoni\ExpRenderTexture.h" />
     <ClInclude Include="headers\Antoni\FractalChart.h" />
+    <ClInclude Include="headers\Antoni\FractalCollision.h" />
     <ClInclude Include="headers\Antoni\MandelViewer.h" />
+    <ClInclude Include="headers\scenes.h" />
+    <ClInclude Include="headers\Sebastian\AssetManager.hpp" />
+    <ClInclude Include="headers\Sebastian\DEFINITIONS.hpp" />
+    <ClInclude Include="headers\Sebastian\Game.hpp" />
+    <ClInclude Include="headers\Sebastian\GameState.hpp" />
+    <ClInclude Include="headers\Sebastian\InputManager.hpp" />
+    <ClInclude Include="headers\Sebastian\MainMenuState.hpp" />
+    <ClInclude Include="headers\Sebastian\PauseState.hpp" />
+    <ClInclude Include="headers\Sebastian\SplashState.hpp" />
+    <ClInclude Include="headers\Sebastian\State.hpp" />
+    <ClInclude Include="headers\Sebastian\StateMachine.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
