@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <cmath>
 
-Player::Player(World* swiat, PlayerAnimation* animation, float X, float Y)
+Player::Player(World* swiat, PlayerAnimation* animation, FractalRenderer* map, float X, float Y)
 {
 	HP = 100;
 	HPSprite.setPosition(100, 100);
@@ -18,15 +18,15 @@ Player::Player(World* swiat, PlayerAnimation* animation, float X, float Y)
 	bodyDef.position.Set(X / PPM, Y / PPM); //pozycja pocz¹tkowa
 	body = swiat->m_world->CreateBody(&bodyDef); //dodanie cia³a do œwiata
 	fixtureDef.restitution = 0.2f;//odbijanie siê obiektów
-	vartices[0].Set(2 / PPM, -40 / PPM);
-	vartices[1].Set(10 / PPM, 20 / PPM);
-	vartices[2].Set(30 / PPM, 10 / PPM);
-	vartices[3].Set(20 / PPM, -10 / PPM);
-	vartices[4].Set(-20 / PPM, -10 / PPM);
-	vartices[5].Set(-30 / PPM, 10 / PPM);
-	vartices[6].Set(-10 / PPM, 20 / PPM);
-	vartices[7].Set(-2 / PPM, -40 / PPM);
-	shipShape.Set(vartices, 8);
+	vertices[0].Set(2 / PPM, -40 / PPM);
+	vertices[1].Set(10 / PPM, 20 / PPM);
+	vertices[2].Set(30 / PPM, 10 / PPM);
+	vertices[3].Set(20 / PPM, -10 / PPM);
+	vertices[4].Set(-20 / PPM, -10 / PPM);
+	vertices[5].Set(-30 / PPM, 10 / PPM);
+	vertices[6].Set(-10 / PPM, 20 / PPM);
+	vertices[7].Set(-2 / PPM, -40 / PPM);
+	shipShape.Set(vertices, 8);
 	fixtureDef.shape = &shipShape; 
 	enginePower = 50.f;
 	maxLateralImpulse = 2.5f;
@@ -36,9 +36,14 @@ Player::Player(World* swiat, PlayerAnimation* animation, float X, float Y)
 	body->CreateFixture(&fixtureDef); //dodanie kolizji do cia³a
 	body->SetUserData(this);
 	animation->sprite.setScale(sf::Vector2f(2, 2));
+	fractalCollision.setFractal(*map);
+
+	
+		//fractalCollision.points.push_back(new sf::Vector2f(vertices[i].x, vertices[i].y));
+
 }
 
-void Player::playerUpdate(PlayerAnimation* animation)
+void Player::playerUpdate(PlayerAnimation* animation, FractalRenderer* map)
 {
 	position = body->GetPosition();
 	angle = body->GetAngle();
@@ -52,7 +57,9 @@ void Player::playerUpdate(PlayerAnimation* animation)
 		hitDamage(animation);
 	else
 		animation->sprite.setColor(sf::Color(255, 255, 255));
-
+	collision(animation, map);
+	
+	//cout << 2 * sin(body->GetAngle()) + (position.x) * PPM << " " << 2 * cos(body->GetAngle()) + (position.y) * PPM << endl;
 	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
 
 	if (Right == true)
@@ -112,4 +119,30 @@ void Player::HPUpdate(sf::Vector2f center)
 	HPSprite.setPosition(center.x + 480, center.y + 300);
 	HPSprite.setSize(sf::Vector2f(HP * 1.5, 40));
 	HPSpriteOutline.setPosition(center.x + 479, center.y + 299);
+}
+
+void Player::collision(PlayerAnimation* animation, FractalRenderer* map)//rozwi¹zanie tymaczasowe
+{
+	if (map->belongsToSet({ position.x * PPM, position.y * PPM }))
+	{
+		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP = 0;
+	}
+	else if (map->belongsToSet({ (1.5 * sin(body->GetAngle()) + position.x) * PPM,(1.5 * -cos(body->GetAngle()) + position.y) * PPM }))
+	{
+		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP = 0;
+	}
+	else if (map->belongsToSet({ (0.6 * -sin(body->GetAngle()) + position.x) * PPM,(0.6 * cos(body->GetAngle()) + position.y) * PPM }))
+	{
+		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP = 0;
+	}
+	else if (map->belongsToSet({ ((0.5 * -sin(body->GetAngle()) + position.x) * PPM) + 35,(0.5 * cos(body->GetAngle()) + position.y) * PPM }))
+	{
+		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP = 0;
+	}
+	else
+		animation->sprite.setColor(sf::Color(255, 255, 255));
 }

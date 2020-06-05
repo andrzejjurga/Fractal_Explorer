@@ -30,16 +30,13 @@ public:
 	~FractalCollision();
 
 
-public:
-
-
 	std::vector<sf::Vector2f*> points;
 
+	FractalRenderer* m_fractal;
 
 private:
 
 	sf::Vector2f m_position;
 	std::vector<bool> m_pointsStatus;
-	FractalRenderer* m_fractal;
 
 };

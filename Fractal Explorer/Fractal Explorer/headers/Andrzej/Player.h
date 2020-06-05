@@ -5,6 +5,9 @@
 #include "PlayerAnimation.h"
 #include "World.h"
 #include "Collision.h"
+#include <FractalCollision.h>
+#include <MandelViewer.h>
+
 
 
 using namespace std;
@@ -15,7 +18,7 @@ public:
 	b2BodyDef bodyDef;
 	b2Body* body;
 	b2PolygonShape shipShape;
-	b2Vec2 vartices[8];
+	b2Vec2 vertices[8];
 	b2FixtureDef fixtureDef;
 	b2Vec2 position;
 	float angle;
@@ -31,14 +34,14 @@ public:
 	bool Right = false;
 	bool Left = false;
 	bool connect = false;
-
+	FractalCollision fractalCollision;//kolizje 
 	int HP; //Punkty ¿ycia statku
 	sf::RectangleShape HPSprite;
 	sf::RectangleShape HPSpriteOutline;
 	//konstruktor
-	Player(World* swiat, PlayerAnimation* animation, float X, float Y);
+	Player(World* swiat, PlayerAnimation* animation, FractalRenderer* map, float X, float Y);
 
-	void playerUpdate(PlayerAnimation* animation);
+	void playerUpdate(PlayerAnimation* animation, FractalRenderer* map);
 
 	b2Vec2 getLateralValocity();
 	b2Vec2 getForwardVelocity();
@@ -49,6 +52,6 @@ public:
 	void startContact();
 
 	void HPUpdate(sf::Vector2f center);
-
+	void collision(PlayerAnimation* animation, FractalRenderer* map);
 
 };

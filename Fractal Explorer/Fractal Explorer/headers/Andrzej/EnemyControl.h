@@ -6,17 +6,21 @@
 #include "Animation.h"
 #include "World.h"
 #include <SFML/Graphics.hpp>
+#include <set>
+#include <FractalCollision.h>
+#include <MandelViewer.h>
 
 class EnemyControl
 {
 public:
+	std::set<Enemy*> forRemoval;
 	vector<Animation> animationTab;
 	vector<Enemy> enemyTab;
 
 	EnemyControl();
 
-	void addEnemy(World * world, Animation * animation);
+	void addEnemy(World * world, Animation * animation, FractalRenderer* map);
 
-	void update(World* world, Player* player, sf::RenderWindow* window, Animation* animation);
+	void update(World* world, Player* player, sf::RenderWindow* window, Animation* animation, FractalRenderer* map);
 
 };

@@ -3,9 +3,53 @@
 #include <Player.h>
 #include <Animation.h>
 #include <Music.h>
-
+#include <EnemyControl.h>
 #include <PlayerAnimation.h>
 #include <FractalChart.h>
+
+void control(Player* player, PlayerAnimation* ship)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        player->Up = true;
+        ship->Up = true;
+    }
+    else
+    {
+        player->Up = false;
+        ship->Up = false;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+        player->Down = true;
+        ship->Down = true;
+    }
+    else
+    {
+        player->Down = false;
+        ship->Down = false;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        player->Right = true;
+        ship->Right = true;
+    }
+    else
+    {
+        player->Right = false;
+        ship->Right = false;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        player->Left = true;
+        ship->Left = true;
+    }
+    else
+    {
+        player->Left = false;
+        ship->Left = false;
+    }
+}
 
 void scenes::game()
 {
@@ -23,24 +67,24 @@ void scenes::game()
     float timeStep = 1.f / 60.f;
     int32 velocityIterations = 3;
     int32 positionIterations = 1;
-
     // Player
 
     PlayerAnimation ship("./Resources/Images/player_ship.png", 44, 28, 4, 0.1f);
-    Player player(&world, &ship, 0, 0);
+    Player player(&world, &ship, &map.m_fractal, 0, 0);
 
     sf::View view;
     view = window.getDefaultView();
 
     // Enemy
-
-
+    EnemyControl enemyControl;
+    Animation enemyShip("./Resources/Images/enemy_ship.png", 44, 28, 4, 0.1f);
     // Flags
 
     bool escapePressed = false;
 
     bool firstRun = true;
-
+    for(int i = 0; i<10;i++)
+        enemyControl.addEnemy(&world, &enemyShip, &map.m_fractal);
     while (window.isOpen() && scenes::currentScene == scene::game)
     {
         while (window.pollEvent(event))
@@ -84,66 +128,31 @@ void scenes::game()
             firstRun = false;
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        {
-            player.Up = true;
-            ship.Up = true;
-        }
-        else
-        {
-            player.Up = false;
-            ship.Up = false;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            player.Down = true;
-            ship.Down = true;
-        }
-        else
-        {
-            player.Down = false;
-            ship.Down = false;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            player.Right = true;
-            ship.Right = true;
-        }
-        else
-        {
-            player.Right = false;
-            ship.Right = false;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            player.Left = true;
-            ship.Left = true;
-        }
-        else
-        {
-            player.Left = false;
-            ship.Left = false;
-        }
+        control(&player, &ship);
 
         //wykonanie jedneko kroku w symulacji
 
         world.m_world->Step(timeStep, velocityIterations, positionIterations);
-
+        set<Enemy*>::iterator i = enemyControl.forRemoval.begin();
+        set<Enemy*>::iterator n = enemyControl.forRemoval.end();
+        for (; i != n; ++i) {
+            Enemy* dyingEnemy = *i;
+        }
+        enemyControl.forRemoval.clear();
         view.setCenter(player.position.x * PPM, player.position.y * PPM);
         map.update({ player.position.x * PPM, player.position.y * PPM });
 
         window.setView(view);
+        player.HPUpdate(view.getCenter());
 
-        player.playerUpdate(&ship);
-
-        if (map.m_fractal.belongsToSet({ player.position.x * PPM, player.position.y * PPM }))
-            ship.sprite.setColor(sf::Color::Red);
-        else
-            ship.sprite.setColor(sf::Color::White);
+        player.playerUpdate(&ship, &map.m_fractal);
 
         window.clear();
         window.draw(map);
         window.draw(ship.sprite);
+        window.draw(player.HPSpriteOutline);
+        window.draw(player.HPSprite);
+        enemyControl.update(&world, &player, &window, &enemyShip, &map.m_fractal);
         window.display();
 
         music.update();

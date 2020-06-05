@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy(World* swiat, Animation* animation, float X, float Y)
+Enemy::Enemy(World* swiat, Animation* animation, FractalRenderer* map, float X, float Y)
 {
 	HP = 20;
 	bodyDef.type = b2_dynamicBody; //okreœlenie typu cia³a dynamiczne/kinetyczne/statyczne
@@ -25,9 +25,10 @@ Enemy::Enemy(World* swiat, Animation* animation, float X, float Y)
 	updateFriction();
 	body->SetUserData(this);
 	animation->sprite.setScale(sf::Vector2f(2, 2));
+	fractalCollision.setFractal(*map);
 }
 
-void Enemy::enemyUpdate(Animation* animation, Player* gracz)
+void Enemy::enemyUpdate(Animation* animation, Player* gracz, FractalRenderer* map)
 {
 	position = body->GetPosition();
 	angle = body->GetAngle();
@@ -54,7 +55,7 @@ void Enemy::enemyUpdate(Animation* animation, Player* gracz)
 		hitDamage(animation);
 	else
 		animation->sprite.setColor(sf::Color(255, 255, 255));
-
+	collision(animation, map);
 	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
 
 }
@@ -90,8 +91,6 @@ void Enemy::hitDamage(Animation* animation)
 	if (HP <= 0)
 	{
 		HP = 0;
-		//delete[] animation;
-		//delete this;
 	}
 	cout << HP << endl;
 }
@@ -99,4 +98,30 @@ void Enemy::hitDamage(Animation* animation)
 Enemy::~Enemy()
 {
 
+}
+
+void Enemy::collision(Animation* animation, FractalRenderer* map)//rozwi¹zanie tymaczasowe
+{
+	if (map->belongsToSet({ position.x * PPM, position.y * PPM }))
+	{
+		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP = 0;
+	}
+	else if (map->belongsToSet({ (1.5 * sin(body->GetAngle()) + position.x) * PPM,(1.5 * -cos(body->GetAngle()) + position.y) * PPM }))
+	{
+		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP = 0;
+	}
+	else if (map->belongsToSet({ (0.6 * -sin(body->GetAngle()) + position.x) * PPM,(0.6 * cos(body->GetAngle()) + position.y) * PPM }))
+	{
+		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP = 0;
+	}
+	else if (map->belongsToSet({ ((0.5 * -sin(body->GetAngle()) + position.x) * PPM) + 35,(0.5 * cos(body->GetAngle()) + position.y) * PPM }))
+	{
+		animation->sprite.setColor(sf::Color(255, 0, 0));
+		HP = 0;
+	}
+	else
+		animation->sprite.setColor(sf::Color(255, 255, 255));
 }

@@ -4,6 +4,8 @@
 #include "Animation.h"
 #include "World.h"
 #include "Player.h"
+#include <FractalCollision.h>
+#include <MandelViewer.h>
 
 using namespace std;
 
@@ -34,16 +36,17 @@ public:
 	float calAngle; //kont wyliczny z wyprzedzeniem dla torqa
 
 	int HP; //Punkty ¿ycia statku
+	FractalCollision fractalCollision;//kolizje 
 	//konstruktor
-	Enemy(World* swiat, Animation* animation, float X, float Y);
+	Enemy(World* swiat, Animation* animation, FractalRenderer* map, float X, float Y);
 
-	void enemyUpdate(Animation* animation, Player* gracz);
+	void enemyUpdate(Animation* animation, Player* gracz, FractalRenderer* map);
 	void updateFriction();//zapobiega "œlizganiu" siê statku na boki
 
 	b2Vec2 getLateralValocity();//prêdkoœæ ruchu bocznego
 	b2Vec2 getForwardVelocity();//prêdkosæ na przód i do ty³u
 
 	void hitDamage(Animation* animation);
-
+	void collision(Animation* animation, FractalRenderer* map);
 	~Enemy();
 };
