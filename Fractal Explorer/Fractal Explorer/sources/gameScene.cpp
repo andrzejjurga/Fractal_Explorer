@@ -6,6 +6,7 @@
 #include <EnemyControl.h>
 #include <PlayerAnimation.h>
 #include <FractalChart.h>
+#include <Explosion.h>
 
 void control(Player* player, PlayerAnimation* ship)
 {
@@ -61,6 +62,8 @@ void scenes::game()
 
     World world;
     Music music;
+    Explosion exp;
+    Explosion expp;
 
     FractalChart map("./Resources/Images/bgAnim.png", "./Resources/Images/bgStatic.png", sf::Vector2i(1280 * 4, 720 * 4), sf::Vector2i(1280, 720), 1);
 
@@ -128,11 +131,16 @@ void scenes::game()
             firstRun = false;
         }
 
-        control(&player, &ship);
-
         //wykonanie jedneko kroku w symulacji
 
         world.m_world->Step(timeStep, velocityIterations, positionIterations);
+        if (player.HP <= 0)
+        {
+            expp.update();
+            expp.sprite.setPosition(sf::Vector2f(player.position.x * PPM, player.position.y * PPM));
+        }
+        exp.update();
+        control(&player, &ship);
         set<Enemy*>::iterator i = enemyControl.forRemoval.begin();
         set<Enemy*>::iterator n = enemyControl.forRemoval.end();
         for (; i != n; ++i) {
@@ -152,7 +160,9 @@ void scenes::game()
         window.draw(ship.sprite);
         window.draw(player.HPSpriteOutline);
         window.draw(player.HPSprite);
-        enemyControl.update(&world, &player, &window, &enemyShip, &map.m_fractal);
+        enemyControl.update(&world, &player, &window, &enemyShip, &map.m_fractal, &exp);
+        window.draw(exp.sprite);
+        window.draw(expp.sprite);
         window.display();
 
         music.update();

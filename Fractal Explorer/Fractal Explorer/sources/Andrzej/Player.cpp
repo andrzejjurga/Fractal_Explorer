@@ -62,14 +62,16 @@ void Player::playerUpdate(PlayerAnimation* animation, FractalRenderer* map)
 	//cout << 2 * sin(body->GetAngle()) + (position.x) * PPM << " " << 2 * cos(body->GetAngle()) + (position.y) * PPM << endl;
 	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
 
-	if (Right == true)
+	if (Right == true && HP > 0)
 		body->ApplyTorque(15, true);
-	if (Left == true)
+	if (Left == true && HP > 0)
 		body->ApplyTorque(-15, true);
-	if (Up == true && currentSpeed<10)
+	if (Up == true && currentSpeed<10 && HP > 0)
 		body->ApplyForce(b2Vec2(enginePower * sin(body->GetAngle()), enginePower * -cos(body->GetAngle())), body->GetWorldCenter(), true);
-	if (Down == true && currentSpeed > -5)
+	if (Down == true && currentSpeed > -5 && HP > 0)
 		body->ApplyForce(b2Vec2(enginePower * -sin(body->GetAngle()), enginePower * cos(body->GetAngle())), body->GetWorldCenter(), true);
+	if (HP <= 0)
+		animation->sprite.setColor(sf::Color(0, 0, 0, 0));
 }
 
 b2Vec2 Player::getLateralValocity()
@@ -105,8 +107,10 @@ void Player::hitDamage(PlayerAnimation* animation)
 {
 		animation->sprite.setColor(sf::Color(255, 0, 0));
 		HP -= abs(currentSpeed - (-1 * b2Dot(getForwardVelocity(), currentForwardNormal)));
-		if (HP < 0)
+		if (HP <= 0)
+		{
 			HP = 0;
+		}
 }
 
 void Player::startContact()

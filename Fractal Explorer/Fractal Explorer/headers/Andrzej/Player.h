@@ -4,7 +4,6 @@
 #include "Animation.h"
 #include "PlayerAnimation.h"
 #include "World.h"
-#include "Collision.h"
 #include <FractalCollision.h>
 #include <MandelViewer.h>
 

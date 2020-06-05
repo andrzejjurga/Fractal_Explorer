@@ -20,3 +20,4 @@ void PlayerAnimation::playerAnimationUpdate()
         clock.restart();
     }
 }
+

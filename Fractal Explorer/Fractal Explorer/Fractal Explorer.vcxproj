@@ -163,7 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="sources\Andrzej\Animation.cpp" />
-    <ClCompile Include="sources\Andrzej\Collision.cpp" />
+    <ClCompile Include="sources\Andrzej\Explosion.cpp" />
     <ClCompile Include="sources\Andrzej\Enemy.cpp" />
     <ClCompile Include="sources\Andrzej\EnemyControl.cpp" />
     <ClCompile Include="sources\Andrzej\Music.cpp" />
@@ -190,7 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Andrzej\Animation.h" />
-    <ClInclude Include="headers\Andrzej\Collision.h" />
+    <ClInclude Include="headers\Andrzej\Explosion.h" />
     <ClInclude Include="headers\Andrzej\Enemy.h" />
     <ClInclude Include="headers\Andrzej\EnemyControl.h" />
     <ClInclude Include="headers\Andrzej\Music.h" />

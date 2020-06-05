@@ -9,9 +9,10 @@ void EnemyControl::addEnemy(World* world, Animation* animation, FractalRenderer*
 {
 	Enemy enemy(world, animation, map, 200, 400);
 	enemyTab.push_back(enemy);
+
 }
 
-void EnemyControl::update(World* world, Player* player, sf::RenderWindow* window, Animation* animation, FractalRenderer* map)
+void EnemyControl::update(World* world, Player* player, sf::RenderWindow* window, Animation* animation, FractalRenderer* map, Explosion* exp)
 {
 	for (int i = 0; i < enemyTab.size(); i++)
 	{
@@ -19,6 +20,9 @@ void EnemyControl::update(World* world, Player* player, sf::RenderWindow* window
 		{
 			forRemoval.insert(&enemyTab[i]);
 			enemyTab.erase(enemyTab.begin()+i);
+			exp->amount = 0;
+			exp->sprite.setPosition(sf::Vector2f(enemyTab[i].position.x * PPM, enemyTab[i].position.y * PPM));
+			window->draw(exp->sprite);
 		}
 		else
 		{
