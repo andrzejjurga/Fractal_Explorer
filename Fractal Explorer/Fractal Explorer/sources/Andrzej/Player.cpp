@@ -1,5 +1,5 @@
 #include "Player.h"
-#include <cmath>
+
 
 Player::Player(World* swiat, PlayerAnimation* animation, FractalRenderer* map, float X, float Y)
 {
@@ -12,7 +12,6 @@ Player::Player(World* swiat, PlayerAnimation* animation, FractalRenderer* map, f
 	HPSpriteOutline.setFillColor(sf::Color(0, 0, 0, 0));
 	HPSpriteOutline.setOutlineColor(sf::Color::Black);
 	HPSpriteOutline.setOutlineThickness(5);
-
 
 	bodyDef.type = b2_dynamicBody; //okreœlenie typu cia³a dynamiczne/kinetyczne/statyczne
 	bodyDef.position.Set(X / PPM, Y / PPM); //pozycja pocz¹tkowa
@@ -37,10 +36,6 @@ Player::Player(World* swiat, PlayerAnimation* animation, FractalRenderer* map, f
 	body->SetUserData(this);
 	animation->sprite.setScale(sf::Vector2f(2, 2));
 	fractalCollision.setFractal(*map);
-
-	
-		//fractalCollision.points.push_back(new sf::Vector2f(vertices[i].x, vertices[i].y));
-
 }
 
 void Player::playerUpdate(PlayerAnimation* animation, FractalRenderer* map)
@@ -59,7 +54,6 @@ void Player::playerUpdate(PlayerAnimation* animation, FractalRenderer* map)
 		animation->sprite.setColor(sf::Color(255, 255, 255));
 	collision(animation, map);
 	
-	//cout << 2 * sin(body->GetAngle()) + (position.x) * PPM << " " << 2 * cos(body->GetAngle()) + (position.y) * PPM << endl;
 	currentSpeed = -1 * b2Dot(getForwardVelocity(), currentForwardNormal);
 
 	if (Right == true && HP > 0)

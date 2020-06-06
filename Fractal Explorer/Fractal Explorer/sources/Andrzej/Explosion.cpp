@@ -14,12 +14,7 @@ Explosion::Explosion()
 void Explosion::update()
 {
     sprite.setTextureRect(
-        sf::IntRect(
-            rectSourceSprite.left += 140,
-            0,
-            140,
-            140
-        ));
+        sf::IntRect(rectSourceSprite.left += 140,0,140,140));
     if (rectSourceSprite.left >= 3780)
         rectSourceSprite.left = 0;
     if (amount > 27)

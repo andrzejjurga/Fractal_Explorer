@@ -8,6 +8,7 @@
 #include <FractalChart.h>
 #include <Explosion.h>
 
+//Obs³uga klawiatury
 void control(Player* player, PlayerAnimation* ship)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -62,8 +63,10 @@ void scenes::game()
 
     World world;
     Music music;
+
+    // Explosion
     Explosion exp;
-    Explosion expp;
+    Explosion p_exp;
 
     FractalChart map("./Resources/Images/bgAnim.png", "./Resources/Images/bgStatic.png", sf::Vector2i(1280 * 4, 720 * 4), sf::Vector2i(1280, 720), 1);
 
@@ -75,6 +78,7 @@ void scenes::game()
     PlayerAnimation ship("./Resources/Images/player_ship.png", 44, 28, 4, 0.1f);
     Player player(&world, &ship, &map.m_fractal, 0, 0);
 
+    // View
     sf::View view;
     view = window.getDefaultView();
 
@@ -136,8 +140,10 @@ void scenes::game()
         world.m_world->Step(timeStep, velocityIterations, positionIterations);
         if (player.HP <= 0)
         {
-            expp.update();
-            expp.sprite.setPosition(sf::Vector2f(player.position.x * PPM, player.position.y * PPM));
+            p_exp.update();
+            p_exp.sprite.setPosition(sf::Vector2f(player.position.x * PPM, player.position.y * PPM));
+            if (p_exp.amount == 27)
+                scenes::currentScene = scene::menu;
         }
         exp.update();
         control(&player, &ship);
@@ -146,15 +152,13 @@ void scenes::game()
         for (; i != n; ++i) {
             Enemy* dyingEnemy = *i;
         }
+
         enemyControl.forRemoval.clear();
         view.setCenter(player.position.x * PPM, player.position.y * PPM);
         map.update({ player.position.x * PPM, player.position.y * PPM });
-
         window.setView(view);
         player.HPUpdate(view.getCenter());
-
         player.playerUpdate(&ship, &map.m_fractal);
-
         window.clear();
         window.draw(map);
         window.draw(ship.sprite);
@@ -162,7 +166,8 @@ void scenes::game()
         window.draw(player.HPSprite);
         enemyControl.update(&world, &player, &window, &enemyShip, &map.m_fractal, &exp);
         window.draw(exp.sprite);
-        window.draw(expp.sprite);
+        window.draw(p_exp.sprite);
+        //Renederowanie klatki
         window.display();
 
         music.update();

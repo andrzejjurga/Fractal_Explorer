@@ -8,12 +8,12 @@ class Animation
 public:
 	sf::Clock clock;
 	sf::Texture texture;
-	sf::IntRect rectSourceSprite;
 	string file;
 	float height;
 	float width;
 	int amount;
 	float speed;
+	sf::IntRect rectSourceSprite;
 	sf::Sprite sprite;
 
 	Animation();

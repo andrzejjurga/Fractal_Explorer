@@ -1,7 +1,9 @@
-﻿  Explosion.cpp
+﻿  Enemy.cpp
+A:\Frkatale++\Fractal Explorer\Fractal Explorer\sources\Andrzej\Enemy.cpp(90,84): warning C4244: "-=": konwersja z "float" do "int", możliwa utrata danych
+  gameScene.cpp
   Trwa generowanie kodu
-  2 of 1262 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  20 of 1262 functions ( 1.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    3 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   Fractal Explorer.vcxproj -> A:\Frkatale++\Fractal Explorer\\bin\x64\Release\Fractal Explorer.exe

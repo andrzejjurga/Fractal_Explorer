@@ -96,9 +96,7 @@ void Enemy::hitDamage(Animation* animation)
 }
 
 Enemy::~Enemy()
-{
-
-}
+{}
 
 void Enemy::collision(Animation* animation, FractalRenderer* map)//rozwi¹zanie tymaczasowe
 {

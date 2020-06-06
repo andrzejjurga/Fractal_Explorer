@@ -6,7 +6,7 @@
 #include "World.h"
 #include <FractalCollision.h>
 #include <MandelViewer.h>
-
+#include <cmath>
 
 
 using namespace std;
