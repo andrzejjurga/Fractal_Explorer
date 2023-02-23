@@ -1,4 +1,4 @@
-# Programowanie_Projekt
+# Fractal Explorer
 Projekt, którego celem jest stworzenie gry opartej na c++
 Oto pierwszy prototyp programu wraz z kodem źródłowym.
 
